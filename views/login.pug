@@ -8,4 +8,9 @@ block content
     +formfield("email", "Email", email, "email")
     +formfield("password", "Password", null, "password")
     button(type="submit") Login
+
+  form(action="/login" method="post")
+    input(type='hidden' name='_csrf' value=csrfToken)
+    +formfield("email", "", 'demo@demo.com' , "hidden")
+    +formfield("password", "", 'Demo1!', "hidden")
     button(type="submit") demo user
