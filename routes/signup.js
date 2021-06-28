@@ -1,9 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const asyncHandler = (handler) => (req, res, next) =>
-  handler(req, res, next).catch(next);
-const csrf = require("csurf");
-const csrfProtection = csrf({ cookie: true });
+const { asyncHandler, csrfProtection } = require("./utils");
 const { check, validationResult } = require("express-validator");
 const db = require("../db/models/");
 const bcrypt = require("bcryptjs");
@@ -52,7 +49,11 @@ router.get(
   csrfProtection,
   asyncHandler(async (req, res) => {
     const user = db.User.build();
-    res.render("signup", { csrfToken: req.csrfToken(), user });
+    res.render("signup", {
+      csrfToken: req.csrfToken(),
+      user,
+      title: "SignUp-Yoda-Flow",
+    });
   })
 );
 
@@ -75,11 +76,16 @@ router.post(
       user.hashedPassword = hashedPassword;
 
       await user.save();
-
+      //need to login user her with logIn from auth.js(yet to be made)
       res.redirect("/");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
-      res.render("signup", { csrfToken: req.csrfToken(), user, errors });
+      res.render("signup", {
+        csrfToken: req.csrfToken(),
+        user,
+        errors,
+        title: "SignUp-Yoda-Flow",
+      });
     }
   })
 );
