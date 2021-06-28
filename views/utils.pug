@@ -1,6 +1,6 @@
 mixin formfield(labelName, labelValue, fieldValue, inputType="text", placeholder=null)
 
-  label(for=labelName)= labelValue;
+  label(for=labelName)= labelValue
 
   if inputType ===  "textarea"
     textarea(id=labelName name=labelName)= fieldValue
