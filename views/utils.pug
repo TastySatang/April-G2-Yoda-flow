@@ -1,2 +1,8 @@
-mixin utils(name, )
-  label(for=name)=
+mixin formfield(labelName, labelValue, fieldValue, inputType="text", placeholder=null)
+
+  label(for=labelName)= labelValue;
+
+  if inputType ===  "textarea"
+    textarea(id=labelName name=labelName)= fieldValue
+  else
+    input(type=inputType name=labelName value=fieldValue placeholder=placeholder)
