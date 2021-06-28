@@ -1,74 +1,87 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const asyncHandler = (handler) => (req, res, next) => handler(req, res, next).catch(next);
-const csrf = require('csurf');
+const asyncHandler = (handler) => (req, res, next) =>
+  handler(req, res, next).catch(next);
+const csrf = require("csurf");
 const csrfProtection = csrf({ cookie: true });
-const { check, validationResult } = require('express-validator');
-const db = require('../db/models/');
-const bcrypt = require('bcryptjs');
+const { check, validationResult } = require("express-validator");
+const db = require("../db/models/");
+const bcrypt = require("bcryptjs");
 
 const signupValidators = [
-    check('name')
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide a name for username')
-        .isLength({ max: 50 })
-        .withMessage('Name is too long, please provide a name under 50 characters'),
-    check('email')
-        .exists({ checkFalsy: true })
-        .withMessage('Please enter email')
-        .isLength({ max: 100 })
-        .isEmail()
-        .withMessage('Please provide a valid email')
-        .custom((value) => {
-            return db.User.findOne({ where: { email: value } })
-                .then((user) => {
-                    if (user) {
-                        return Promise.reject('The provided Email Address is already in use by another account');
-                    }
-                });
-        }),
-    check('password')
-        .exists({ checkFalsy: true })
-        .withMessage('Please input a password')
-        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
-        .withMessage('Please provide a password with at least one lowercase letter, one uppercase letter, one number, and one special character: !@#$%^&*'),
-    check('confirmPassword')
-        .exists({ checkFalsy: true })
-        .withMessage('Please put in the password again')
-        .custom((value, { req }) => {
-            if (value != req.body.password) {
-                throw new Error(`Passwords don't match`)
-            }
-            return true;
-        })
-] 
+  check("name")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a name for username")
+    .isLength({ max: 50 })
+    .withMessage("Name is too long, please provide a name under 50 characters"),
+  check("email")
+    .exists({ checkFalsy: true })
+    .withMessage("Please enter email")
+    .isLength({ max: 100 })
+    .isEmail()
+    .withMessage("Please provide a valid email")
+    .custom((value) => {
+      return db.User.findOne({ where: { email: value } }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided Email Address is already in use by another account"
+          );
+        }
+      });
+    }),
+  check("password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please input a password")
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, "g")
+    .withMessage(
+      "Please provide a password with at least one lowercase letter, one uppercase letter, one number, and one special character: !@#$%^&*"
+    ),
+  check("confirmPassword")
+    .exists({ checkFalsy: true })
+    .withMessage("Please put in the password again")
+    .custom((value, { req }) => {
+      if (value != req.body.password) {
+        throw new Error(`Passwords don't match`);
+      }
+      return true;
+    }),
+];
 
-router.get('/', csrfProtection, asyncHandler(async (req, res) => {
-    res.render('signup', { csrfToken: req.csrfToken() });
-}));
+router.get(
+  "/",
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    const user = db.User.build();
+    res.render("signup", { csrfToken: req.csrfToken(), user });
+  })
+);
 
-router.post('/', csrfProtection, signupValidators, asyncHandler(async (req, res) => {
+router.post(
+  "/",
+  csrfProtection,
+  signupValidators,
+  asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
 
     const user = db.User.build({
-        name,
-        email
+      name,
+      email,
     });
 
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        user.hashedPassword = hashedPassword;
+      const hashedPassword = await bcrypt.hash(password, 10);
+      user.hashedPassword = hashedPassword;
 
-        await user.save();
+      await user.save();
 
-        res.redirect('/');
+      res.redirect("/");
+    } else {
+      const errors = validatorErrors.array().map((error) => error.msg);
+      res.render("signup", { csrfToken: req.csrfToken(), user, errors });
     }
-    else {
-        const errors = validatorErrors.array().map(error => error.msg);
-        res.render('signup', { csrfToken: req.csrfToken(), user, errors });
-    }
-}))
+  })
+);
 
 module.exports = router;

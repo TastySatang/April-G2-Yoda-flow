@@ -6,3 +6,12 @@ mixin formfield(labelName, labelValue, fieldValue, inputType="text", placeholder
     textarea(id=labelName name=labelName)= fieldValue
   else
     input(type=inputType name=labelName value=fieldValue placeholder=placeholder)
+
+
+mixin errorList(errors)
+  if errors
+    div(role="alert")
+      p The following error(s) occurred:
+      ul
+        each error in errors
+          li= error
