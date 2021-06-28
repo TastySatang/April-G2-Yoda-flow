@@ -1,10 +1,12 @@
 const express = require("express");
-const router = express.Router();
-const { asyncHandler, csrfProtection } = require("./utils");
-const db = require("../db/models/");
-const bcrypt = require("bcryptjs");
-const { loginUser } = require("../auth")
 const { check, validationResult } = require("express-validator")
+const bcrypt = require("bcryptjs");
+
+const { loginUser } = require("../auth")
+const db = require("../db/models/");
+const { asyncHandler, csrfProtection } = require("./utils");
+
+const router = express.Router();
 
 router.get(
   "/",

@@ -1,5 +1,7 @@
 var express = require('express');
+
 const { logOut } = require('../auth');
+
 var router = express.Router();
 
 /* GET users listing. */
