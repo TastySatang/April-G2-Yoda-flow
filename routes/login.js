@@ -3,6 +3,7 @@ const router = express.Router();
 const { asyncHandler, csrfProtection } = require("./utils");
 const db = require("../db/models/");
 const bcrypt = require("bcryptjs");
+const { loginUser } = require("../auth")
 
 router.get(
   "/",
@@ -35,7 +36,7 @@ router.post(
         user.hashedPassword.toString()
       );
       if (passwordMatched) {
-        //add logIn user
+        loginUser(req, res, user);
         return res.redirect("/");
       }
     }
