@@ -69,4 +69,11 @@ router.post(
   })
 );
 
+router.post('/demo', asyncHandler(async (req, res) => {
+  req.session.auth = {
+    userId: 1
+  }
+  return res.redirect("/");
+}))
+
 module.exports = router;
