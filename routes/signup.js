@@ -55,12 +55,20 @@ router.post('/', csrfProtection, signupValidators, asyncHandler(async (req, res)
         email
     });
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    user.hashedPassword = hashedPassword;
+    const validatorErrors = validationResult(req);
 
-    await user.save();
+    if (validatorErrors.isEmpty()) {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        user.hashedPassword = hashedPassword;
 
-    res.redirect('/');
+        await user.save();
+
+        res.redirect('/');
+    }
+    else {
+        const errors = validatorErrors.array().map(error => error.msg);
+        res.render('signup', { csrfToken: req.csrfToken(), user, errors });
+    }
 }))
 
 module.exports = router;
