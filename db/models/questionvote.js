@@ -5,8 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     questionId: DataTypes.INTEGER,
     upvote: DataTypes.BOOLEAN
   }, {});
-  QuestionVote.associate = function(models) {
+  QuestionVote.associate = function (models) {
     // associations can be defined here
+    QuestionVote.belongsTo(models.User, { foreignKey: "userId" });
+    QuestionVote.belongsTo(models.Question, { foreignKey: "questionId" })
   };
   return QuestionVote;
 };
