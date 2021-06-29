@@ -1,0 +1,13 @@
+extends layout.pug
+include utils
+
+block content
+    body
+        +errorList(errors)
+        form(action=`/questions/${question.id}/edit` method="POST")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            +formfield("title", "Enter A Title Here: ", question.title, "text")
+            +formfield("content", "Enter a Question Here: ", question.content, "textarea")
+            button Submit
+        button
+            a(href="/questions/") Cancel
