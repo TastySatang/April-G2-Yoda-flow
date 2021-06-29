@@ -6,14 +6,21 @@ html
         link(rel='stylesheet' href='/stylesheets/index.css')
   body
 
-    div(class='nav')
-      if locals.authenticated
-        div
-          a(class="button button--red-hover" href="/logout") Log out
-      else
-        div
-          a(class='button' href="/login") Log in
-          a(class='button' href="/signup") Sign up
+    div(class='navcontainer')
+      div(class='nav')
+        div(class='navbar__left')
+          img(class='icon' src="/baby-yoda.png", alt="babyyodapic")
+
+        div(class='navbar__middle')
+          input(class='searchbar' type="text" placeholder="Search...")
+          //- placeholer for search bar
+        if locals.authenticated
+          div
+            a(class="button button--red-hover" href="/logout") Log out
+        else
+          div(class='navbar__right')
+            a(class='button' href="/login") Log in
+            a(class='button' href="/signup") Sign up
 
 
     block content
