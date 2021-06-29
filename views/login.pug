@@ -1,0 +1,13 @@
+extends layout
+include utils
+
+block content
+  +errorList(errors)
+  form(action="/login" method="POST" )
+    input(type='hidden' name='_csrf' value=csrfToken)
+    +formfield("email", "Email", email, "email")
+    +formfield("password", "Password", null, "password")
+    button(type="submit") Login
+
+  form(action="/login/demo" method="post")
+    button(type="submit") demo user
