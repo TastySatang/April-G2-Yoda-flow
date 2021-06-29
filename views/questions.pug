@@ -1,6 +1,9 @@
 extends layout.pug 
 
-block content 
+block content
+    button 
+        a(href="/questions/new") New Question
+
     body 
         ul 
             each question in questions 
