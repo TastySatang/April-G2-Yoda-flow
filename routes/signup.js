@@ -1,9 +1,12 @@
 const express = require("express");
-const router = express.Router();
-const { asyncHandler, csrfProtection } = require("./utils");
 const { check, validationResult } = require("express-validator");
-const db = require("../db/models/");
 const bcrypt = require("bcryptjs");
+
+const { loginUser } = require("../auth");
+const db = require("../db/models/");
+const { asyncHandler, csrfProtection } = require("./utils");
+
+const router = express.Router();
 
 const signupValidators = [
   check("name")
@@ -76,7 +79,7 @@ router.post(
       user.hashedPassword = hashedPassword;
 
       await user.save();
-      //need to login user her with logIn from auth.js(yet to be made)
+      loginUser(req, res, user);
       req.session.save(() => res.redirect("/"));
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);

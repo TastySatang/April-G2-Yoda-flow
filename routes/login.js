@@ -1,10 +1,12 @@
 const express = require("express");
-const router = express.Router();
-const { asyncHandler, csrfProtection } = require("./utils");
-const db = require("../db/models/");
-const bcrypt = require("bcryptjs");
-const { loginUser } = require("../auth")
 const { check, validationResult } = require("express-validator")
+const bcrypt = require("bcryptjs");
+
+const { loginUser } = require("../auth")
+const db = require("../db/models/");
+const { asyncHandler, csrfProtection } = require("./utils");
+
+const router = express.Router();
 
 router.get(
   "/",
@@ -52,7 +54,7 @@ router.post(
         );
         if (passwordMatched) {
           loginUser(req, res, user);
-          req.session.save(() => res.redirect("/"));
+          return req.session.save(() => res.redirect("/"));
         }
       }
       errors.push('Login failed for email and password')
@@ -73,7 +75,7 @@ router.post('/demo', asyncHandler(async (req, res) => {
   req.session.auth = {
     userId: 1
   }
-  req.session.save(() => res.redirect("/") );
+  req.session.save(() => res.redirect("/"));
 }))
 
 module.exports = router;
