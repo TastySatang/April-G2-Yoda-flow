@@ -12,6 +12,7 @@ block content
             ul
                 li= question.content
         if user === question.userId
-            button(type="submit") Edit
+            button 
+                a(href=`/questions/${question.id}/edit`) Edit
             form(action=`/questions/${question.id}` method="post")
                 button(tyep="submit") Delete

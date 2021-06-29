@@ -28,7 +28,6 @@ router.get('/', asyncHandler(async (req, res) => {
 
 }));
 
-
 router.get('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
     res.render('new-question', {
         title: "New Question Yoda Flow",
@@ -75,13 +74,47 @@ router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
 }));
 
 
-router.post('/:id(\\d+)', asyncHandler(async(req,res)=>{
+router.post('/:id(\\d+)', asyncHandler(async (req, res) => {
     const questionId = req.params.id;
     const question = await db.Question.findByPk(questionId);
 
     await question.destroy();
     req.session.save(() => res.redirect('/questions'));
 }));
+
+router.get('/:id(\\d+)/edit', csrfProtection, requireAuth, questionValidator, asyncHandler(async (req, res) => {
+    const questionId = req.params.id;
+    const question = await db.Question.findByPk(questionId);
+
+    res.render('update-question', {
+        question,
+        csrfToken: req.csrfToken()
+    })
+}))
+
+router.post('/:id(\\d+)/edit', requireAuth, csrfProtection, questionValidator, asyncHandler(async (req, res) => {
+    const questionId = req.params.id;
+    const question = await db.Question.findByPk(questionId);
+    const { title, content } = req.body;
+
+    const updatedQuestion = {
+        title,
+        content
+    }
+
+    const validationErrors = validationResult(req);
+    if (validationErrors.isEmpty()) {
+
+        await question.update(updatedQuestion);
+        req.session.save(() => res.redirect(`/questions/${questionId}`));
+    } else {
+        const errors = validationErrors.array().map((error) => error.msg);
+        res.render('new-question', {
+            csrfToken: req.csrfToken(),
+            errors
+        })
+    }
+}))
 
 
 module.exports = router;
