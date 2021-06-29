@@ -52,7 +52,7 @@ router.post(
         );
         if (passwordMatched) {
           loginUser(req, res, user);
-          return res.redirect("/");
+          req.session.save(() => res.redirect("/"));
         }
       }
       errors.push('Login failed for email and password')
@@ -73,7 +73,7 @@ router.post('/demo', asyncHandler(async (req, res) => {
   req.session.auth = {
     userId: 1
   }
-  return res.redirect("/");
+  req.session.save(() => res.redirect("/") );
 }))
 
 module.exports = router;

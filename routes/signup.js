@@ -77,7 +77,7 @@ router.post(
 
       await user.save();
       //need to login user her with logIn from auth.js(yet to be made)
-      res.redirect("/");
+      req.session.save(() => res.redirect("/"));
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("signup", {

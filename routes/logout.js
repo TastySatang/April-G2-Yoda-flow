@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
 
 router.post('/', (req, res) => {
   logOut(req, res);
-  res.redirect('/');
+  req.session.save(() => res.redirect('/'));
 })
 
 module.exports = router;
