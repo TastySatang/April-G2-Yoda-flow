@@ -1,9 +1,13 @@
+body{
+  background-color:#000000;
+}
+
 .navcontainer {
   width: 100%;
   display: flex;
   justify-content: center;
   box-shadow: 0px 1px 0 rgba(12, 13, 14, .15);
-  background-color: #000000;
+  background-color: #242424;
   position: fixed;
   z-index: 1;
 }
@@ -54,6 +58,12 @@
   background-color: #343434;
 }
 
+.searchbar:hover {
+  outline: none;
+  border: 1px solid #1CC2EE;
+  background-color: #343434;
+}
+
 .icon {
   width: 30px;
   height: 30px;
@@ -80,14 +90,94 @@
 }
 
 .block{
+display: flex;
+justify-content: center;
 position: relative;
-height: 100%;
 top: 60px;
 }
 
-form {
+.error__container {
+  color: rgba(235, 26, 29, 1);
+}
+
+.form__container{
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 300px;
 }
 
+.form__inputs{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 30em;
+  border-radius: 7px;
+  background-color: whitesmoke;
+  background-color: #181818;
+}
+
+label{
+  align-self: flex-start;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 7.5%;
+  margin-top: 10px;
+  font-weight: 600;
+  color: whitesmoke;
+}
+
+
+#email,
+#password {
+  width: 85%;
+  padding: 15px 9px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  color: black;
+  border-radius: 7px;
+}
+
+#email:focus,
+#password:focus {
+  outline: none;
+  border: 1px solid #EDD700;
+  background-color: #484848;
+  color: white;
+}
+
+.form__inputs2 {
+ width: 30em;
+ display:flex;
+ justify-content: center;
+}
+
+.form__container__button {
+  width: 85%;
+  padding: 15px 15px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  border-radius: 7px;
+  border-style: none;
+  background-color: #3E3E3E;
+  color: #EDBE59;
+  cursor: pointer;
+}
+
+.form__container__button:hover {
+  background-color: #8A8A8A;
+}
+
+#demo{
+  margin-top: 50px;
+  background-color: #EDBE59;
+  color: #000000;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#demo:hover{
+  background-color: #DDCC00;
+}

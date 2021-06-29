@@ -3,10 +3,11 @@ include utils
 
 block content
   +errorList(errors)
-  form(action="/signup" method="POST" )
-    input(type='hidden' name='_csrf' value=csrfToken)
-    +formfield("name", "Username", user.name)
-    +formfield("email", "Email", user.email, "email")
-    +formfield("password", "Password", null, "password")
-    +formfield("confirmPassword", "Confirm Password", null, "password")
-    button(type="submit") Sign Up
+  div(class='form__container')
+    form(action="/signup" method="POST" )
+      input(type='hidden' name='_csrf' value=csrfToken)
+      +formfield("name", "Username", user.name, 'username')
+      +formfield("email", "Email", user.email,"email")
+      +formfield("password", "Password", null, "password")
+      +formfield("confirmPassword", "Confirm Password", null, "password")
+      button(type="submit") Sign Up

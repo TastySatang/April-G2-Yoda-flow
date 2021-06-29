@@ -17,7 +17,7 @@ html
         div(class='navbar__middle')
           input(class='searchbar' type="text" placeholder="Search...")
         if locals.authenticated
-          div
+          div(class='navbar__right')
             a(class="button button--red-hover" href="/logout") Log out
         else
           div(class='navbar__right')
