@@ -1,6 +1,11 @@
 extends layout
 
 block content
-    h1= question.title
-        ul
-            li= question.content
+    div
+        button 
+            a(href="/questions/") Questions
+    div
+        h1= question.title
+        h3=  `Asked by: ${question.User.name}`
+            ul
+                li= question.content
