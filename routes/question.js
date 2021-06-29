@@ -58,16 +58,30 @@ router.post('/new', requireAuth, csrfProtection, questionValidator, asyncHandler
     }
 }))
 
+
 router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     const questionId = req.params.id;
+
     const question = await db.Question.findByPk(questionId, {
         include: db.User
     })
+    const user = req.session.auth.userId
+    // console.log(req.session.auth.userId)
     res.render('single-question', {
         title: 'Individual-Quesiton-Yoda-Flow',
-        question
+        question,
+        user
     })
-}))
+}));
+
+
+router.post('/:id(\\d+)', asyncHandler(async(req,res)=>{
+    const questionId = req.params.id;
+    const question = await db.Question.findByPk(questionId);
+
+    await question.destroy();
+    req.session.save(() => res.redirect('/questions'));
+}));
 
 
 module.exports = router;

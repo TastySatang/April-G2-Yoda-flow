@@ -2,10 +2,16 @@ extends layout
 
 block content
     div
-        button 
+        button
             a(href="/questions/") Questions
     div
         h1= question.title
         h3=  `Asked by: ${question.User.name}`
+        h3=  `Asked at: ${question.createdAt}`
+
             ul
                 li= question.content
+        if user === question.userId
+            button(type="submit") Edit
+            form(action=`/questions/${question.id}` method="post")
+                button(tyep="submit") Delete
