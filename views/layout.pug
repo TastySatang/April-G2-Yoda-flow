@@ -9,11 +9,13 @@ html
     div(class='navcontainer')
       div(class='nav')
         div(class='navbar__left')
-          img(class='icon' src="/baby-yoda.png", alt="babyyodapic")
+          a(href="/")
+            img(class='icon' src="/baby-yoda.png", alt="babyyodapic")
+          a(class="button" href='/questions') Browse
+          a(class="button" href='/questions/new') Ask
 
         div(class='navbar__middle')
           input(class='searchbar' type="text" placeholder="Search...")
-          //- placeholer for search bar
         if locals.authenticated
           div
             a(class="button button--red-hover" href="/logout") Log out
@@ -22,5 +24,5 @@ html
             a(class='button' href="/login") Log in
             a(class='button' href="/signup") Sign up
 
-
-    block content
+    div(class='block')
+      block content

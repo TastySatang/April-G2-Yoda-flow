@@ -3,20 +3,23 @@
   display: flex;
   justify-content: center;
   box-shadow: 0px 1px 0 rgba(12, 13, 14, .15);
-  background-color: #fafafbaf;
+  background-color: #000000;
+  position: fixed;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color:#ffffff;
-  width: 800px;
+  background-color: inherit;
+  width: 1100px;
 
 }
 
 .navbar__left {
- display:inline-block;
+ display:flex;
+ justify-content: center;
+ align-items: center;
  height: 30px;
 }
 
@@ -31,15 +34,29 @@
 .navbar__right {
   display: flex;
   justify-content: center;
+  min-width: 140px;
 }
 
 .searchbar {
   width: 100%;
+  height: 30px;
+  padding: .6em .7em;
+  color: black;
+  background-color: #242424;
+  border:none;
+  border-radius: 2px;
+}
+
+.searchbar:focus {
+  outline: none;
+  border: 1px solid #1CC2EE;
+  background-color: #343434;
 }
 
 .icon {
   width: 30px;
   height: 30px;
+  margin-right: 5px;
 }
 
 .button {
@@ -47,11 +64,9 @@
   font-weight: 600;
   display: inline-block;
   text-decoration: none;
-  background-color: #100B0D;
+  background-color: transparent;
   color: #a9a9aa;
   padding: .8em;
-  border: 1px solid ;
-  border-radius: 3px;
   margin: 6px 3px 6px 0px;
 }
 
@@ -61,4 +76,9 @@
 
 .button--red-hover:hover{
   color: rgb(235, 26, 29);
+}
+
+.block{
+position: relative;
+top: 60px;
 }
