@@ -31,12 +31,13 @@ router.get('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) =>
 }));
 
 router.post('/new', requireAuth, csrfProtection, questionValidator, asyncHandler(async(req,res)=>{
-    const { content } = req.body;
+    const { title, content } = req.body;
 
     const validationErrors = validationResult(req);
     if(validationErrors.isEmpty()){
         const question = await db.Question.build({
             userId: res.locals.user.id,
+            title,
             content,
         });
 

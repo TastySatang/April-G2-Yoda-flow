@@ -6,5 +6,6 @@ block content
         +errorList(errors)
         form(action="/questions/new" method="POST")
             input(type="hidden" name="_csrf" value=csrfToken)
+            +formfield("title", "Enter A Title Here", null, "text")
             +formfield("content", "Enter a Question Here", null, "textarea")
             button Submit
