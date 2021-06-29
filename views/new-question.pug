@@ -1,9 +1,9 @@
-extends layout.pug 
+extends layout.pug
 include utils
 
-block content 
-    body 
+block content
+    body
         form(action="/questions/new" method="POST")
             input(type="hidden" name="_csrf" value=csrfToken)
             +formfield("content", "Enter a Question Here", null, "textarea")
-        button Submit
+            button Submit

@@ -1,10 +1,11 @@
-extends layout.pug 
+extends layout.pug
 
 block content
-    button 
-        a(href="/questions/new") New Question
-
-    body 
-        ul 
-            each question in questions 
+    if locals.authenticated
+        div
+            button
+                a(href="/questions/new") New Question
+    body
+        ul
+            each question in questions
                 li= question.content
