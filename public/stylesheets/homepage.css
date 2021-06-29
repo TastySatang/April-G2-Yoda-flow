@@ -1,0 +1,27 @@
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  background-color: saddlebrown;
+}
+
+.button {
+  font: 13px Arial;
+  font-weight: 600;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #100B0D;
+  color: #a9a9aa;
+  padding: .8em;
+  border: 1px solid ;
+  border-radius: 3px;
+  margin: 6px 3px 6px 0px;
+
+}
+
+.button:hover {
+  color: #1CC2EE;
+}
+
+.button--red-hover:hover{
+  color: rgb(235, 26, 29);
+}

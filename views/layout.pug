@@ -3,16 +3,17 @@ html
   head
       block head
         title=title
-        link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/index.css')
   body
-    if locals.authenticated
-      div
-        a(href="/logout") logout
-    else
-      div
-        a(href="/login") login
-      div
-        a(href="/signup") signup
+
+    div(class='nav')
+      if locals.authenticated
+        div
+          a(class="button button--red-hover" href="/logout") Log out
+      else
+        div
+          a(class='button' href="/login") Log in
+          a(class='button' href="/signup") Sign up
 
 
     block content
