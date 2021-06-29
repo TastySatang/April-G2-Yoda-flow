@@ -8,4 +8,5 @@ block content
     body
         ul
             each question in questions
-                li= question.content
+                li
+                    a(href=`/questions/${question.id}`) #{question.content}
