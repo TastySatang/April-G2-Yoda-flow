@@ -64,18 +64,29 @@ router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     const question = await db.Question.findByPk(questionId, {
         include: db.User
     })
+    const answers = await db.Answer.findAll({
+        include: [
+            db.User,
+            db.Question
+        ],
+        where: {
+            questionId
+        }
+    });
     if (req.session.auth) {
         const user = req.session.auth.userId
         // console.log(req.session.auth.userId)
         res.render('single-question', {
             title: 'Individual-Quesiton-Yoda-Flow',
             question,
+            answers,
             user
         })
     } else {
         res.render('single-question', {
             title: 'Individual-Quesiton-Yoda-Flow',
-            question
+            question,
+            answers
         })
     }
 }));

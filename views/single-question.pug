@@ -18,3 +18,7 @@ block content
                 button(tyep="submit") Delete
         button
             a(href=`/questions/${question.id}/answer/new`) Answer
+    div 
+        each answer in answers 
+            li= answer.content
+                p= `Answered by: ${answer.User.name}`
