@@ -51,6 +51,7 @@ router.post('/new', requireAuth, csrfProtection, questionValidator, asyncHandler
     } else {
         const errors = validationErrors.array().map((error) => error.msg);
         res.render('new-question', {
+            title: "New Question Yoda Flow",
             csrfToken: req.csrfToken(),
             errors
         })
@@ -64,18 +65,29 @@ router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     const question = await db.Question.findByPk(questionId, {
         include: db.User
     })
+    const answers = await db.Answer.findAll({
+        include: [
+            db.User,
+            db.Question
+        ],
+        where: {
+            questionId
+        }
+    });
     if (req.session.auth) {
         const user = req.session.auth.userId
         // console.log(req.session.auth.userId)
         res.render('single-question', {
             title: 'Individual-Quesiton-Yoda-Flow',
             question,
+            answers,
             user
         })
     } else {
         res.render('single-question', {
             title: 'Individual-Quesiton-Yoda-Flow',
-            question
+            question,
+            answers
         })
     }
 }));
@@ -93,10 +105,14 @@ router.get('/:id(\\d+)/edit', csrfProtection, requireAuth, questionValidator, as
     const questionId = req.params.id;
     const question = await db.Question.findByPk(questionId);
 
-    res.render('update-question', {
-        question,
-        csrfToken: req.csrfToken()
-    })
+    if (req.session.auth.userId === question.userId) {
+        res.render('update-question', {
+            question,
+            csrfToken: req.csrfToken()
+        })
+    } else {
+        res.send('403 Forbidden')
+    }
 }))
 
 router.post('/:id(\\d+)/edit', requireAuth, csrfProtection, questionValidator, asyncHandler(async (req, res) => {
@@ -110,6 +126,7 @@ router.post('/:id(\\d+)/edit', requireAuth, csrfProtection, questionValidator, a
     }
 
     const validationErrors = validationResult(req);
+
     if (validationErrors.isEmpty()) {
 
         await question.update(updatedQuestion);
@@ -122,6 +139,7 @@ router.post('/:id(\\d+)/edit', requireAuth, csrfProtection, questionValidator, a
         })
     }
 }))
+
 
 
 module.exports = router;
