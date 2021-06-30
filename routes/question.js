@@ -51,6 +51,7 @@ router.post('/new', requireAuth, csrfProtection, questionValidator, asyncHandler
     } else {
         const errors = validationErrors.array().map((error) => error.msg);
         res.render('new-question', {
+            title: "New Question Yoda Flow",
             csrfToken: req.csrfToken(),
             errors
         })
@@ -104,10 +105,14 @@ router.get('/:id(\\d+)/edit', csrfProtection, requireAuth, questionValidator, as
     const questionId = req.params.id;
     const question = await db.Question.findByPk(questionId);
 
-    res.render('update-question', {
-        question,
-        csrfToken: req.csrfToken()
-    })
+    if (req.session.auth === question.userId) {
+        res.render('update-question', {
+            question,
+            csrfToken: req.csrfToken()
+        })
+    } else {
+        res.send('403 Forbidden')
+    }
 }))
 
 router.post('/:id(\\d+)/edit', requireAuth, csrfProtection, questionValidator, asyncHandler(async (req, res) => {
