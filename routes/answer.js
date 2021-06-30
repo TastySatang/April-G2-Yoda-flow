@@ -34,4 +34,13 @@ router.post(`/questions/:questionId(\\d+)/answer/new`, csrfProtection, requireAu
     req.session.save(() => res.redirect(`/questions/${question.id}`));
 }))
 
+
+router.post('/questions/:questionId(\\d+)/answer/:answerId(\\d+)', asyncHandler(async (req, res) => {
+    const questionId = req.params.questionId;
+    const answerId = req.params.answerId;
+    const answer = await db.Answer.findByPk(answerId);
+
+    await answer.destroy();
+    req.session.save(() => res.redirect(`/questions/${questionId}`));
+}));
 module.exports = router;
