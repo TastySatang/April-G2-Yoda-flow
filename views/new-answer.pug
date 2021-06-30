@@ -9,6 +9,6 @@ block content
     form(action=`/questions/${question.id}/answer/new` method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
         +formfield("content", "Enter a Answer Here: ", null, "textarea")
-        button(class="question-button") Submit
-    button(class="question-button")
+        button(class="qa-button") Submit
+    button(class="qa-button")
        a(href=`/questions/${question.id}`) Cancel

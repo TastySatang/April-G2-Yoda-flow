@@ -1,5 +1,8 @@
 extends layout.pug
 include utils
+append head
+    //- add page specific styles by appending to the head
+    link(rel="stylesheet" href="/stylesheets/question.css")
 
 block content
     body
@@ -8,6 +11,6 @@ block content
             input(type="hidden" name="_csrf" value=csrfToken)
             +formfield("title", "Enter A Title Here: ", null, "text")
             +formfield("content", "Enter a Question Here: ", null, "textarea")
-            button Submit
-        button
+            button(class="qa-button") Submit
+        button(class="qa-button")
             a(href="/questions/") Cancel

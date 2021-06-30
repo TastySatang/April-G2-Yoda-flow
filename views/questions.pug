@@ -8,10 +8,10 @@ append head
 block content
     if locals.authenticated
         div
-            button(class="question-button")
+            button(class="qa-button")
                 a(href="/questions/new") New Question
     body
         ul
             each question in questions
-                li
+                li(class="question-list")
                     a(href=`/questions/${question.id}`) #{question.title}

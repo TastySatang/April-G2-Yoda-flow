@@ -1,4 +1,31 @@
-.question-button{
-    background-color: yellow;
-    color: red
+@import url('http://fonts.cdnfonts.com/css/starjedi-special-edition');
+@font-face {
+    font-family: 'StarJedi Special Edition';
+    src: local('StarJedi Special Edition') format('truetype');
+  }
+
+a{
+    text-decoration: none;
+}
+
+.qa-button{
+    background-color: #DAAF59;
+    color: black;
+    padding: 10px 32px 7px;
+    border: 1px solid #DAAF59;
+    border-radius: 4px;
+    font-family: 'Star Jedi Outline', sans-serif;
+}
+
+.question-list{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 5px;
+    font-family: 'StarJedi Special Edition';
+    color: rgb(0, 174, 255)
+}
+
+.question-list > a{
+    font-size: 24px;
 }
