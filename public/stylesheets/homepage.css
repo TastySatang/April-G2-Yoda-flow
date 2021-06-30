@@ -1,5 +1,10 @@
 body{
   background-color:#000000;
+  background-image: url('/stars.jpeg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  z-index: -1;
 }
 
 .navcontainer {
@@ -91,13 +96,21 @@ body{
 
 .block{
 display: flex;
+flex-direction: column;
 justify-content: center;
 position: relative;
 top: 60px;
 }
 
 .error__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: rgba(235, 26, 29, 1);
+  align-self: center;
+  background-color: #181818;
+  padding: 0px 2em 2em 5px;
+  border-radius: 2px;
 }
 
 .form__container{
@@ -115,6 +128,7 @@ top: 60px;
   border-radius: 7px;
   background-color: whitesmoke;
   background-color: #181818;
+  margin-top: 5em;
 }
 
 label{
@@ -127,7 +141,8 @@ label{
   color: whitesmoke;
 }
 
-
+#name,
+#confirmPassword,
 #email,
 #password {
   width: 85%;
@@ -171,7 +186,7 @@ label{
 }
 
 #demo{
-  margin-top: 50px;
+  margin-top: 3em;
   background-color: #EDBE59;
   color: #000000;
   font-weight: 700;

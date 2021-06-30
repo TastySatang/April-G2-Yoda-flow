@@ -2,12 +2,13 @@ extends layout
 include utils
 
 block content
+
   +errorList(errors)
   div(class='form__container')
-    form(action="/signup" method="POST" )
+    form(class='form__inputs' action="/signup" method="POST" )
       input(type='hidden' name='_csrf' value=csrfToken)
       +formfield("name", "Username", user.name, 'username')
       +formfield("email", "Email", user.email,"email")
       +formfield("password", "Password", null, "password")
       +formfield("confirmPassword", "Confirm Password", null, "password")
-      button(type="submit") Sign Up
+      button(class='form__container__button' type="submit") Sign Up
