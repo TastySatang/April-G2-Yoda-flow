@@ -70,7 +70,7 @@ router.get('/questions/:questionId(\\d+)/answer/:answerId(\\d+)/edit', requireAu
     });
     // const question = await db.Question.findByPk(req.params.questionId)
 
-    if (req.session.auth === answer.userId) {
+    if (req.session.auth.userId === answer.userId) {
         res.render('update-answer', {
             csrfToken: req.csrfToken(),
             title: "Update-Yoda-Flow",

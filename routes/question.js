@@ -105,7 +105,7 @@ router.get('/:id(\\d+)/edit', csrfProtection, requireAuth, questionValidator, as
     const questionId = req.params.id;
     const question = await db.Question.findByPk(questionId);
 
-    if (req.session.auth === question.userId) {
+    if (req.session.auth.userId === question.userId) {
         res.render('update-question', {
             question,
             csrfToken: req.csrfToken()
