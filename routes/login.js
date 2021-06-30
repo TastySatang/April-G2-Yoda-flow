@@ -37,7 +37,7 @@ router.post(
   asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
-    const errors = [];
+    let errors = [];
     const validationErrors = validationResult(req);
 
     if (validationErrors.isEmpty()) {
