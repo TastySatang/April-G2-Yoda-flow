@@ -47,14 +47,18 @@ router.post('/questions/:questionId(\\d+)/answer/:answerId(\\d+)', asyncHandler(
 router.get('/questions/:questionId(\\d+)/answer/:answerId(\\d+)/edit', requireAuth, csrfProtection, asyncHandler(async(req, res) => {
     const answerId = req.params.answerId;
     const answer = await db.Answer.findByPk(answerId, {
-        include: db.Question
+        include: db.Question,
+        where: {
+            questionId
+        }
     });
-    // const question = await db.Question.findByPk()
+    // const question = await db.Question.findByPk(req.params.questionId)
 
     res.render('update-answer', {
         csrfToken: req.csrfToken(),
         title: "Update-Yoda-Flow",
-        answer
+        answer,
+        // question
     })
 }))
 
