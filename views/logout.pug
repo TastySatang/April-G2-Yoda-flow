@@ -1,9 +1,8 @@
 extends layout
 
 block content
-  div
-    form(action="/logout" method="post")
-      button(type='submit') logout???????
-  div
-    button
-      a(href="/") cancel
+  div(class='form__container')
+    form(class='form__inputs' action="/logout" method="post")
+      button(class='form__container__button' type='submit') Log Out
+      button(class='form__container__button')
+        a(id='cancel' href="/") Cancel
