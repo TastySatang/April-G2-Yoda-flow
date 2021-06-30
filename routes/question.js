@@ -110,6 +110,7 @@ router.post('/:id(\\d+)/edit', requireAuth, csrfProtection, questionValidator, a
     }
 
     const validationErrors = validationResult(req);
+
     if (validationErrors.isEmpty()) {
 
         await question.update(updatedQuestion);
@@ -122,6 +123,7 @@ router.post('/:id(\\d+)/edit', requireAuth, csrfProtection, questionValidator, a
         })
     }
 }))
+
 
 
 module.exports = router;
