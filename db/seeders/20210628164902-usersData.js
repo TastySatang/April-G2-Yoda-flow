@@ -5,7 +5,9 @@ module.exports = {
     return queryInterface.bulkInsert('Users', [{
       name: 'demo',
       email: 'demo@demo.com',
-      hashedPassword: '$2a$10$W0dMKHhiMCNCo2pIqvaVq.cgoLeD5UMhYDD69jo6vCmbYUbMKMm6.'
+      hashedPassword: '$2a$10$W0dMKHhiMCNCo2pIqvaVq.cgoLeD5UMhYDD69jo6vCmbYUbMKMm6.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }], {});
     /*
       Add altering commands here.
