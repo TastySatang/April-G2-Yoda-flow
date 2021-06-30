@@ -1,9 +1,14 @@
 extends layout.pug
 
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/question.css")
+
+
 block content
     if locals.authenticated
         div
-            button
+            button(class="question-button")
                 a(href="/questions/new") New Question
     body
         ul

@@ -1,8 +1,13 @@
 extends layout
 
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/question.css")
+
+
 block content
     div
-        button
+        button(class="question-button")
             a(href="/questions/") Questions
     div
         h1= question.title
@@ -12,18 +17,18 @@ block content
             ul
                 li= question.content
         if user === question.userId
-            button
+            button(class="question-button")
                 a(href=`/questions/${question.id}/edit`) Edit
             form(action=`/questions/${question.id}` method="post")
-                button(type="submit") Delete
-        button
+                button(class="question-button" type="submit") Delete
+        button(class="question-button")
             a(href=`/questions/${question.id}/answer/new`) Answer
     div
         each answer in answers
             li= answer.content
                 p= `Answered by: ${answer.User.name}`
                 if user === answer.userId
-                    button
+                    button(class="question-button")
                         a(href=`/questions/${question.id}/answer/${answer.id}/edit`) Edit
                     form(action=`/questions/${question.id}/answer/${answer.id}` method="post")
-                        button(type="submit") Delete
+                        button(class="question-button" type="submit") Delete

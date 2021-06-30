@@ -1,10 +1,14 @@
 extends layout.pug
 include utils.pug
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/question.css")
+
 block content
     +errorList(errors)
     form(action=`/questions/${question.id}/answer/new` method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
         +formfield("content", "Enter a Answer Here: ", null, "textarea")
-        button Submit
-    button
+        button(class="question-button") Submit
+    button(class="question-button")
        a(href=`/questions/${question.id}`) Cancel
