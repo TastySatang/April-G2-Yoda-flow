@@ -2,5 +2,48 @@
 @import url("homepage.css");
 
 h1 {
-    color: #555555;
+    font-family: 'StarJedi';
+    color: white;
+}
+
+.grid__container {
+    display:grid;
+    grid-template-columns: repeat(3, 400px);
+}
+
+@media screen and (max-width: 1200px){
+    .grid__container {
+        grid-template-columns: repeat(2, 400px);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .grid__container {
+        grid-template-columns: 400px;
+    }
+}
+
+.grid__logo {
+ width: 400px;
+ height: auto;
+}
+
+.grid__logo__container {
+    max-width: 400px;
+}
+
+.landing__title {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.landing__title > h1 {
+    font-size: 50px;
+}
+
+.landing__title > p {
+    font-family: 'Starjedi';
+    color: white;
+    font-size: 20px;
+    text-align: center;
 }

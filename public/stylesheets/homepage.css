@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'StarJedi';
+  src: url('/Starjout.ttf') format('truetype');
+}
+
+
+
 body{
   background-color:white;
   background-image: url('/stars.jpeg');
@@ -98,6 +105,7 @@ body{
 display: flex;
 flex-direction: column;
 justify-content: center;
+align-items: center;
 position: relative;
 top: 60px;
 }
@@ -195,4 +203,8 @@ label{
 
 #demo:hover{
   background-color: #DDCC00;
+}
+
+#cancel {
+  text-decoration: none;
 }
