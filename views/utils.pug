@@ -5,13 +5,13 @@ mixin formfield(labelName, labelValue, fieldValue, inputType="text", placeholder
   if inputType ===  "textarea"
     textarea(id=labelName name=labelName)= fieldValue
   else
-    input(type=inputType name=labelName value=fieldValue placeholder=placeholder)
+    input(id=labelName class=className type=inputType name=labelName value=fieldValue placeholder=placeholder )
 
 
 mixin errorList(errors)
   if errors
-    div(role="alert")
+    div(class='error__container' role="alert")
       p The following error(s) occurred:
       ul
         each error in errors
-          li= error
+          p= error

@@ -2,12 +2,15 @@ extends layout
 include utils
 
 block content
-  +errorList(errors)
-  form(action="/login" method="POST" )
-    input(type='hidden' name='_csrf' value=csrfToken)
-    +formfield("email", "Email", email, "email")
-    +formfield("password", "Password", null, "password")
-    button(type="submit") Login
 
-  form(action="/login/demo" method="post")
-    button(type="submit") demo user
+  +errorList(errors)
+  div(class='form__container')
+
+    form(class='form__inputs' action="/login" method="POST" )
+      input(type='hidden' name='_csrf' value=csrfToken)
+      +formfield("email", "Email", email, "email")
+      +formfield("password", "Password", null, "password")
+      button(class='form__container__button' type="submit") Login
+
+    form(class='form__inputs2' action="/login/demo" method="post")
+      button(class='form__container__button' id='demo' type="submit") Demo User
