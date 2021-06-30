@@ -19,11 +19,19 @@ router.get('/questions/:questionId(\\d+)/answer/new', csrfProtection, requireAut
 
 }));
 
-router.post(`/questions/:quesitonId(\\d+)/answer/new`, csrfProtection, asyncHandler(async(req, res)=>{
+router.post(`/questions/:questionId(\\d+)/answer/new`, csrfProtection, requireAuth, asyncHandler(async(req, res)=>{
     const questionId = req.params.questionId;
     const question = await db.Question.findByPk(questionId);
 
+    const { content } = req.body;
 
+    const answer = db.Answer.build({
+        userId: res.locals.user.id,
+        content,
+        questionId
+    })
+    await answer.save();
+    req.session.save(() => res.redirect(`/questions/${question.id}`));
 }))
 
 module.exports = router;
