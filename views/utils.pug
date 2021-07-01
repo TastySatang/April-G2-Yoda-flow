@@ -3,7 +3,7 @@ mixin formfield(labelName, labelValue, fieldValue, inputType="text", placeholder
   label(for=labelName)= labelValue
 
   if inputType ===  "textarea"
-    textarea(id=labelName name=labelName)= fieldValue
+    textarea(id=labelName class=className name=labelName)= fieldValue
   else
     input(id=labelName class=className type=inputType name=labelName value=fieldValue placeholder=placeholder )
 
