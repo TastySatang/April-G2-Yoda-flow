@@ -10,6 +10,6 @@ block content
       form(action=`/questions/${question.id}/answer/new` method="post" class="form__inputs-answer")
           input(type="hidden" name="_csrf" value=csrfToken)
           +formfield("content", "Enter a Answer Here: ", null, "textarea")
-          button(class="qa-button-answer form__container__button") Submit
+          button(class="qa-button-answer form__container__button submit") Submit
       button(class="qa-button-answer cancel form__container__button")
         a(href=`/questions/${question.id}`) Cancel
