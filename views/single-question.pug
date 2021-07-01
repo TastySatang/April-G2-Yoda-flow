@@ -11,8 +11,9 @@ block content
             a(href="/questions/") Back To All Questions
     div(class="questionDetail")
         div(class="questionDetail__container")
-            h1= question.title
-            h3=  `Asked by: ${question.User.name}`
+            div(class="questionTitle")
+                h1= question.title
+                h3=  `Asked by: ${question.User.name}`
             div(class="questionContent")
                 p= question.content
             div(class="total__div-row")
