@@ -15,22 +15,23 @@ block content
             h3=  `Asked by: ${question.User.name}`
             div(class="questionContent")
                 p= question.content
-            if user === question.userId
-                div(class="button-row")
-                    button(class="qa__button edit questionEdit")
-                        a(href=`/questions/${question.id}/edit`) Edit
-                    form(action=`/questions/${question.id}` method="post")
-                        button(class="qa__button delete questionDelete" type="submit") Delete
-            div
-                button(class="qa__button answer" id="questionAnswer__button")
-                    a(href=`/questions/${question.id}/answer/new`) Answer
-        div(class="answerDetail__container")
+            div(class="total__div-row")
+                if user === question.userId
+                    div(class="button-row")
+                        button(class="qa__button edit questionEdit")
+                            a(href=`/questions/${question.id}/edit`) Edit
+                        form(action=`/questions/${question.id}` method="post")
+                            button(class="qa__button delete questionDelete" type="submit") Delete
+                div
+                    button(class="qa__button answer" id="questionAnswer__button")
+                        a(href=`/questions/${question.id}/answer/new`) Answer
             each answer in answers
-                li= answer.content
-                    p= `Answered by: ${answer.User.name}`
-                    if user === answer.userId
-                        div(class="button-row")
-                            button(class="qa__button edit")
-                                a(href=`/questions/${question.id}/answer/${answer.id}/edit`) Edit
-                            form(action=`/questions/${question.id}/answer/${answer.id}` method="post")
-                                button(class="qa__button delete" type="submit") Delete
+                div(class="answerDetail__container")
+                    p= answer.content
+                        h3= `Answered by: ${answer.User.name}`
+                        if user === answer.userId
+                            div(class="button-row")
+                                button(class="qa__button edit")
+                                    a(href=`/questions/${question.id}/answer/${answer.id}/edit`) Edit
+                                form(action=`/questions/${question.id}/answer/${answer.id}` method="post")
+                                    button(class="qa__button delete" type="submit") Delete

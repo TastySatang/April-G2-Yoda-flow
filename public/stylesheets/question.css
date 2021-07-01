@@ -163,7 +163,6 @@ h3{
 .questionContent{
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     box-sizing: border-box;
     border:1px solid #bbbbbb10;
     word-wrap: break-word;
@@ -187,4 +186,36 @@ h3{
     width: 60px;
     height: 30px;
     padding: 0px;
+}
+
+.total__div-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: inherit;
+}
+
+.answer {
+    padding: 2px;
+}
+
+.answerDetail__container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border:1px solid #bbbbbb10;
+    word-wrap: break-word;
+    margin: 10px;
+    width: 81%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    background-color:#bbbbbb10;
+    font-family: "DIN Next W01 Light";
+    line-height: 1.4;
+    font-size: 24px;
+}
+
+.answerDetail__container > p {
+    font-size: 20px;
 }
