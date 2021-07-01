@@ -126,3 +126,8 @@ a{
 .form__container-answer label {
     color:  rgb(0, 174, 255);
 }
+
+.delete:hover,
+.cancel:hover {
+    background-color: red;
+}
