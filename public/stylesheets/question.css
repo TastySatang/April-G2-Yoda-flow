@@ -92,3 +92,37 @@ a{
   min-width: 30em;
   border-radius: 7px;
 }
+
+.form__container-answer {
+  font-family: 'StarJedi Special Edition';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 390px;
+  background-color: #181818;
+  margin-top: 3em;
+  border-radius: 7px;
+}
+
+.form__inputs-answer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 30em;
+  border-radius: 7px;
+}
+
+.qa-button-answer{
+       background-color: #DAAF59;
+    color: black;
+    padding: 10px 15px 7px;
+    border: 1px solid #DAAF59;
+    border-radius: 4px;
+    font-family: 'Star Jedi Outline', sans-serif;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.form__container-answer label {
+    color:  rgb(0, 174, 255);
+}
