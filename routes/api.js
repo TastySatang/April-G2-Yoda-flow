@@ -22,18 +22,7 @@ router.get(
 const voteValidator = [
   check("userId")
     .exists({ checkFalsy: true })
-    .withMessage("There needs to a user associated with the vote")
-    .custom(async (value, { req }) => {
-      let user = await db.QuestionVote.findAll({
-        where: {
-          userId: value,
-          questionId: req.body.questionId,
-        },
-      });
-      if (user) {
-        Promise.reject("You cannont vote on a question more than once");
-      }
-    }),
+    .withMessage("There needs to a user associated with the vote"),
   check("questionId")
     .exists({ checkFalsy: true })
     .withMessage("There needs to be a question to be able to vote"),
@@ -44,11 +33,35 @@ const voteValidator = [
 
 router.post(
   "/questions/:id(\\d+)/votes",
+  voteValidator,
   asyncHandler(async (req, res) => {
     const { userId, questionId, upvote } = req.body;
-    let vote = await db.QuestionVote.create({ userId, questionId, upvote });
 
-    res.json({ vote });
+    let errors = [];
+    const validationErrors = validationResult(req);
+    if (validationErrors.isEmpty()) {
+      let user = await db.QuestionVote.findAll({
+        where: {
+          userId,
+          questionId,
+        },
+      });
+
+      if (user.length) {
+        errors.push("You can't vote twice");
+      } else {
+        let vote = await db.QuestionVote.create({ userId, questionId, upvote });
+
+        res.json({ vote });
+      }
+    } else {
+      errors = validationErrors.array().map((error) => error.msg);
+    }
+    const err = Error("Bad request.");
+    err.errors = errors;
+    err.status = 400;
+    err.title = "Bad request.";
+    res.json({ err });
   })
 );
 

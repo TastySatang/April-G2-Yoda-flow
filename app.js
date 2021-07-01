@@ -16,7 +16,6 @@ const questionsRouter = require("./routes/question");
 const { sessionSecret } = require("./config/index");
 const apiRouter = require("./routes/api");
 const answerRouter = require("./routes/answer");
-const { sessionSecret } = require("./config/index");
 
 const app = express();
 
