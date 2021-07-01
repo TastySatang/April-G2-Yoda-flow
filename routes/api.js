@@ -21,14 +21,8 @@ router.get(
 );
 
 const voteValidator = [
-  check("userId")
-    .exists({ checkFalsy: true })
-    .withMessage("There needs to a user associated with the vote"),
-  check("questionId")
-    .exists({ checkFalsy: true })
-    .withMessage("There needs to be a question to be able to vote"),
   check("upvote")
-    .exists({ checkFalsy: true })
+    .exists({ checkNull: true })
     .withMessage("There need to be a vote to vote"),
 ];
 
@@ -37,12 +31,14 @@ router.post(
   requireAuth,
   voteValidator,
   asyncHandler(async (req, res) => {
+    console.log("INSIDE THE ROUT");
     const { upvote } = req.body;
     const questionId = req.params.id;
     const { userId } = req.session.auth;
 
     let errors = [];
     const validationErrors = validationResult(req);
+    console.log(validationErrors.isEmpty());
     if (validationErrors.isEmpty()) {
       let user = await db.QuestionVote.findAll({
         where: {
@@ -56,7 +52,7 @@ router.post(
       } else {
         let vote = await db.QuestionVote.create({ userId, questionId, upvote });
 
-        res.json({ vote });
+        return res.json({ vote });
       }
     } else {
       errors = validationErrors.array().map((error) => error.msg);
@@ -70,11 +66,11 @@ router.post(
 );
 
 router.put(
-  "/questions/:id(\\d+)/votes/:vid(\\d+)",
+  "/questions/:id(\\d+)/votes",
   requireAuth,
-  voteValidator[2],
+  voteValidator,
   asyncHandler(async (req, res) => {
-    const voteId = req.params.vid;
+    console.log("INSIDE PU");
     const { upvote } = req.body;
     const questionId = req.params.id;
     const { userId } = req.session.auth;
@@ -83,11 +79,16 @@ router.put(
     const validationErrors = validationResult(req);
 
     if (validationErrors.isEmpty()) {
-      const vote = await db.QuestionVote.findByPk(voteId);
+      const vote = await db.QuestionVote.findOne({
+        where: {
+          questionId,
+          userId,
+        },
+      });
 
       await vote.update({ upvote, questionId, userId });
 
-      res.json({ vote });
+      return res.json({ vote });
     } else {
       errors = validationErrors.array().map((error) => error.msg);
       const err = Error("Bad request.");
@@ -100,12 +101,18 @@ router.put(
 );
 
 router.delete(
-  "/questions/:id(\\d+)/votes/:vid(\\d+)",
+  "/questions/:id(\\d+)/votes/",
   requireAuth,
   asyncHandler(async (req, res) => {
-    const voteId = req.params.vid;
+    console.log("inside the route");
+    const questionId = req.params.id;
     const { userId } = req.session.auth;
-    const vote = await db.QuestionVote.findByPk(voteId);
+    const vote = await db.QuestionVote.findOne({
+      where: {
+        questionId,
+        userId,
+      },
+    });
     if (vote && vote.userId === userId) {
       await vote.destroy();
       res.status(204).end();

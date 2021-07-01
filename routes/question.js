@@ -1,145 +1,176 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { check, validationResult } = require("express-validator")
-const { loginUser, requireAuth } = require("../auth")
+const { check, validationResult } = require("express-validator");
+const { loginUser, requireAuth } = require("../auth");
 const db = require("../db/models/");
 const { asyncHandler, csrfProtection } = require("./utils");
 
 const questionValidator = [
-    check("title")
-        .exists({ checkFalsy: true })
-        .withMessage("Please enter a valid title.")
-        .isLength({ max: 100 })
-        .withMessage("Please keep the title under 100 characters!")
-    ,
-    check("content")
-        .exists({ checkFalsy: true })
-        .withMessage("Please enter a valid question here.")
-]
+  check("title")
+    .exists({ checkFalsy: true })
+    .withMessage("Please enter a valid title.")
+    .isLength({ max: 100 })
+    .withMessage("Please keep the title under 100 characters!"),
+  check("content")
+    .exists({ checkFalsy: true })
+    .withMessage("Please enter a valid question here."),
+];
 
-router.get('/', asyncHandler(async (req, res) => {
-
+router.get(
+  "/",
+  asyncHandler(async (req, res) => {
     const questions = await db.Question.findAll({
-        limit: 10,
-        order: [['updatedAt', 'DESC']]
+      limit: 10,
+      order: [["updatedAt", "DESC"]],
     });
 
-    res.render('questions', { questions });
+    res.render("questions", { questions });
+  })
+);
 
-}));
-
-router.get('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
-    res.render('new-question', {
-        title: "New Question Yoda Flow",
-        csrfToken: req.csrfToken()
+router.get(
+  "/new",
+  requireAuth,
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    res.render("new-question", {
+      title: "New Question Yoda Flow",
+      csrfToken: req.csrfToken(),
     });
-}));
+  })
+);
 
-router.post('/new', requireAuth, csrfProtection, questionValidator, asyncHandler(async (req, res) => {
+router.post(
+  "/new",
+  requireAuth,
+  csrfProtection,
+  questionValidator,
+  asyncHandler(async (req, res) => {
     const { title, content } = req.body;
 
     const validationErrors = validationResult(req);
     if (validationErrors.isEmpty()) {
-        const question = await db.Question.build({
-            userId: res.locals.user.id,
-            title,
-            content,
-        });
+      const question = await db.Question.build({
+        userId: res.locals.user.id,
+        title,
+        content,
+      });
 
-        await question.save();
-        req.session.save(() => res.redirect('/questions'));
+      await question.save();
+      req.session.save(() => res.redirect("/questions"));
     } else {
-        const errors = validationErrors.array().map((error) => error.msg);
-        res.render('new-question', {
-            title: "New Question Yoda Flow",
-            csrfToken: req.csrfToken(),
-            errors
-        })
+      const errors = validationErrors.array().map((error) => error.msg);
+      res.render("new-question", {
+        title: "New Question Yoda Flow",
+        csrfToken: req.csrfToken(),
+        errors,
+      });
     }
-}))
+  })
+);
 
-
-router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
+router.get(
+  "/:id(\\d+)",
+  csrfProtection,
+  asyncHandler(async (req, res) => {
     const questionId = req.params.id;
 
     const question = await db.Question.findByPk(questionId, {
-        include: db.User
-    })
+      include: db.User,
+    });
     const answers = await db.Answer.findAll({
-        include: [
-            db.User,
-            db.Question
-        ],
-        where: {
-            questionId
-        }
+      include: [db.User, db.Question],
+      where: {
+        questionId,
+      },
     });
     if (req.session.auth) {
-        const user = req.session.auth.userId
-        // console.log(req.session.auth.userId)
-        res.render('single-question', {
-            title: 'Individual-Quesiton-Yoda-Flow',
-            question,
-            answers,
-            user
-        })
+      const user = req.session.auth.userId;
+      //do query to check if uer is in list for a wquestion send pug a boolean if they votes
+      // console.log(req.session.auth.userId)
+      const vote = await db.QuestionVote.findOne({
+        where: {
+          userId: user,
+          questionId,
+        },
+      });
+
+      res.render("single-question", {
+        title: "Individual-Quesiton-Yoda-Flow",
+        question,
+        answers,
+        user,
+        vote,
+      });
     } else {
-        res.render('single-question', {
-            title: 'Individual-Quesiton-Yoda-Flow',
-            question,
-            answers
-        })
+      res.render("single-question", {
+        title: "Individual-Quesiton-Yoda-Flow",
+        question,
+        answers,
+      });
     }
-}));
+  })
+);
 
-
-router.post('/:id(\\d+)', asyncHandler(async (req, res) => {
+router.post(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res) => {
     const questionId = req.params.id;
     const question = await db.Question.findByPk(questionId);
 
     await question.destroy();
-    req.session.save(() => res.redirect('/questions'));
-}));
+    req.session.save(() => res.redirect("/questions"));
+  })
+);
 
-router.get('/:id(\\d+)/edit', csrfProtection, requireAuth, questionValidator, asyncHandler(async (req, res) => {
+router.get(
+  "/:id(\\d+)/edit",
+  csrfProtection,
+  requireAuth,
+  questionValidator,
+  asyncHandler(async (req, res) => {
     const questionId = req.params.id;
     const question = await db.Question.findByPk(questionId);
 
     if (req.session.auth.userId === question.userId) {
-        res.render('update-question', {
-            question,
-            csrfToken: req.csrfToken()
-        })
+      res.render("update-question", {
+        question,
+        csrfToken: req.csrfToken(),
+      });
     } else {
-        res.send(403)
+      res.send(403);
     }
-}))
+  })
+);
 
-router.post('/:id(\\d+)/edit', requireAuth, csrfProtection, questionValidator, asyncHandler(async (req, res) => {
+router.post(
+  "/:id(\\d+)/edit",
+  requireAuth,
+  csrfProtection,
+  questionValidator,
+  asyncHandler(async (req, res) => {
     const questionId = req.params.id;
     const question = await db.Question.findByPk(questionId);
     const { title, content } = req.body;
 
     const updatedQuestion = {
-        title,
-        content
-    }
+      title,
+      content,
+    };
 
     const validationErrors = validationResult(req);
 
     if (validationErrors.isEmpty()) {
-
-        await question.update(updatedQuestion);
-        req.session.save(() => res.redirect(`/questions/${questionId}`));
+      await question.update(updatedQuestion);
+      req.session.save(() => res.redirect(`/questions/${questionId}`));
     } else {
-        const errors = validationErrors.array().map((error) => error.msg);
-        res.render('new-question', {
-            csrfToken: req.csrfToken(),
-            errors
-        })
+      const errors = validationErrors.array().map((error) => error.msg);
+      res.render("new-question", {
+        csrfToken: req.csrfToken(),
+        errors,
+      });
     }
-}))
-
-
+  })
+);
 
 module.exports = router;

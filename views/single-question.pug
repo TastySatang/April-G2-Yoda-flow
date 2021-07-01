@@ -3,6 +3,7 @@ extends layout
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/question.css")
+  script(src="/javascripts/votes.js" type="module" defer)
 
 
 block content
@@ -13,8 +14,22 @@ block content
         div(class="questionDetail__container")
             h1= question.title
             h3=  `Asked by: ${question.User.name}`
-            div(class="questionContent")
-                p= question.content
+            div
+                div
+                    if(vote === null)
+                        button(id="question_upVote") up vote
+                        span(id="question-vote__count") 0
+                        button(id="question_downVote") down vote
+                    else if(vote.upvote  === false)
+                        button(id="question_upVote") up vote
+                        span(id="question-vote__count") 0
+                        button(id="question_downVote" class="active") down vote
+                    else
+                        button(id="question_upVote" class="active") up vote
+                        span(id="question-vote__count") 0
+                        button(id="question_downVote") down vote
+                div(class="questionContent")
+                    p= question.content
             div(class="total__div-row")
                 if user === question.userId
                     div(class="button-row")
