@@ -12,6 +12,6 @@ block content
                 input(type="hidden" name="_csrf" value=csrfToken)
                 +formfield("title", "Enter A Title Here: ", null, "text")
                 +formfield("content", "Enter a Question Here: ", null, "textarea")
-                button(class="qa__button form__container__button" id="question-submt") Submit
+                button(class="qa__button form__container__button submit" id="question-submt") Submit
             button(class="qa__button cancel form__container__button")
                 a(href="/questions/") Cancel
