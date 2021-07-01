@@ -1,12 +1,20 @@
 extends layout.pug
 
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/question.css")
+
+
 block content
     if locals.authenticated
         div
-            button
-                a(href="/questions/new") New Question
+            button(class="qa__button" id="ask__button")
+                a(href="/questions/new") Ask Question
     body
-        ul
+        div(class="questionList__container")
             each question in questions
-                li
+                li(class="question__list")
                     a(href=`/questions/${question.id}`) #{question.title}
+                    div(class="vote__container")
+                        button
+                            span Vote(s): 0

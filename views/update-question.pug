@@ -1,13 +1,18 @@
 extends layout.pug
 include utils
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/question.css")
+
 
 block content
     body
         +errorList(errors)
-        form(action=`/questions/${question.id}/edit` method="POST")
-            input(type="hidden" name="_csrf" value=csrfToken)
-            +formfield("title", "Enter A Title Here: ", question.title, "text")
-            +formfield("content", "Enter a Question Here: ", question.content, "textarea")
-            button Submit
-        button
-            a(href="/questions/") Cancel
+        div(class='form__container-new')
+            form(action=`/questions/${question.id}/edit` method="POST" class='form__inputs-new')
+                input(type="hidden" name="_csrf" value=csrfToken)
+                +formfield("title", "Enter A Title Here: ", question.title, "text")
+                +formfield("content", "Enter a Question Here: ", question.content, "textarea")
+                button(class="qa__button form__container__button" ) Submit
+            button(class="qa__button cancel form__container__button")
+                a(href=`/questions/${question.id}`) Cancel
