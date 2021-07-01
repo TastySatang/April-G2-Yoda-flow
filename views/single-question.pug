@@ -28,7 +28,7 @@ block content
             each answer in answers
                 div(class="answerDetail__container")
                     p= answer.content
-                        h3= `Answered by: ${answer.User.name}`
+                    h3= `Answered by: ${answer.User.name}`
                         if user === answer.userId
                             div(class="button-row")
                                 button(class="qa__button edit")
