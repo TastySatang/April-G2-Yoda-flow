@@ -6,10 +6,6 @@ append head
 
 
 block content
-    if locals.authenticated
-        div
-            button(class="qa__button" id="ask__button")
-                a(href="/questions/new") Ask Question
     body
         div(class="questionList__container")
             each question in questions

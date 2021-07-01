@@ -108,6 +108,7 @@ router.get('/:id(\\d+)/edit', csrfProtection, requireAuth, questionValidator, as
     if (req.session.auth.userId === question.userId) {
         res.render('update-question', {
             question,
+            title: "Edit Question Yoda Flow",
             csrfToken: req.csrfToken()
         })
     } else {
@@ -133,9 +134,11 @@ router.post('/:id(\\d+)/edit', requireAuth, csrfProtection, questionValidator, a
         req.session.save(() => res.redirect(`/questions/${questionId}`));
     } else {
         const errors = validationErrors.array().map((error) => error.msg);
-        res.render('new-question', {
+        res.render('update-question', {
             csrfToken: req.csrfToken(),
-            errors
+            errors,
+            title: "Edit Question Yoda Flow",
+            question,
         })
     }
 }))
