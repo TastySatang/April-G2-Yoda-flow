@@ -7,7 +7,6 @@ const { check, validationResult } = require("express-validator");
 router.get(
   "/questions/:id(\\d+)/votes",
   asyncHandler(async (req, res) => {
-    let votes = 0;
     const questionId = req.params.id;
 
     const votesArr = await db.QuestionVote.findAll({
