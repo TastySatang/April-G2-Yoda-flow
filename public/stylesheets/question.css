@@ -256,3 +256,7 @@ h1 {
   background-color: #2ff924;
   border-color: #2ff924;
 }
+
+.active {
+  background-color: green;
+}

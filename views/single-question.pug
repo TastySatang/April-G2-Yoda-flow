@@ -12,32 +12,25 @@ block content
             a(href="/questions/") Back To All Questions
     div(class="questionDetail")
         div(class="questionDetail__container")
-<<<<<<< HEAD
-            h1= question.title
-            h3=  `Asked by: ${question.User.name}`
-            div
-                div
-                    if(vote === null)
-                        button(id="question_upVote") up vote
-                        span(id="question-vote__count") 0
-                        button(id="question_downVote") down vote
-                    else if(vote.upvote  === false)
-                        button(id="question_upVote") up vote
-                        span(id="question-vote__count") 0
-                        button(id="question_downVote" class="active") down vote
-                    else
-                        button(id="question_upVote" class="active") up vote
-                        span(id="question-vote__count") 0
-                        button(id="question_downVote") down vote
-                div(class="questionContent")
-                    p= question.content
-=======
             div(class="questionTitle")
                 h1= question.title
                 h3=  `Asked by: ${question.User.name}`
-            div(class="questionContent")
-                p= question.content
->>>>>>> main
+                div
+                    div
+                        if(vote === null)
+                            button(id="question_upVote") up vote
+                            span(id="question-vote__count") 0
+                            button(id="question_downVote") down vote
+                        else if(vote.upvote  === false)
+                            button(id="question_upVote") up vote
+                            span(id="question-vote__count") 0
+                            button(id="question_downVote" class="active") down vote
+                        else
+                            button(id="question_upVote" class="active") up vote
+                            span(id="question-vote__count") 0
+                            button(id="question_downVote") down vote
+                    div(class="questionContent")
+                        p= question.content
             div(class="total__div-row")
                 if user === question.userId
                     div(class="button-row")
