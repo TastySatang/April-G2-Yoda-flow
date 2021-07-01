@@ -1,0 +1,221 @@
+@import url('http://fonts.cdnfonts.com/css/starjedi-special-edition');
+@font-face {
+    font-family: 'StarJedi Special Edition';
+    src: local('StarJedi Special Edition') format('truetype');
+  }
+
+a{
+    text-decoration: none;
+}
+
+.qa__button{
+    background-color: #DAAF59;
+    color: black;
+    padding: 10px 15px 7px;
+    border: 1px solid #DAAF59;
+    border-radius: 4px;
+    font-family: 'Star Jedi Outline', sans-serif;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.question__list{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    font-family: 'StarJedi Special Edition';
+    color: rgb(0, 174, 255);
+    border-bottom: 1px solid #bbbbbb10;
+    align-items: center;
+
+}
+
+.question__list > a{
+    font-size: 24px;
+    overflow-x: hidden;
+}
+
+.question__list > a:hover{
+    color: rgb(0, 21, 255)
+}
+
+#ask__button > a:hover{
+    font-size: 30px;
+}
+
+.questionList__container{
+    display: flex;
+    flex-direction: column;
+    background-color: #181818;
+    margin: 10px;
+    border-radius: 7px;
+    width: 60%;
+}
+
+
+#content {
+  width: 85%;
+  padding: 15px 9px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  color: black;
+  border-radius: 7px;
+  height: 200px;
+}
+
+#title {
+    width: 85%;
+    font-size: 16px;
+    background-color: #FFFFFF;
+    color: black;
+    border-radius: 7px;
+    font-family: 'StarJedi Special Edition';
+}
+
+.form__container-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 480px;
+  background-color: #181818;
+  margin-top: 3em;
+  border-radius: 7px;
+}
+
+.form__inputs-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 30em;
+  border-radius: 7px;
+}
+
+.form__container-answer {
+  font-family: 'StarJedi Special Edition';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 390px;
+  background-color: #181818;
+  margin-top: 3em;
+  border-radius: 7px;
+}
+
+.form__inputs-answer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 30em;
+  border-radius: 7px;
+}
+
+.qa-button-answer{
+    background-color: #DAAF59;
+    color: black;
+    padding: 10px 15px 7px;
+    border: 1px solid #DAAF59;
+    border-radius: 4px;
+    font-family: 'Star Jedi Outline', sans-serif;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.form__container-answer label {
+    color:  rgb(0, 174, 255);
+}
+
+.delete:hover,
+.cancel:hover {
+    background-color: red;
+}
+
+.button-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.questionDetail{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #181818;
+    height: 100%;
+    margin-top: 3em;
+    border-radius: 7px;
+    align-items: flex-start;
+    width: 85%;
+}
+
+.questionDetail__container{
+    display: flex;
+    flex-direction: column;
+    width: 90%
+}
+
+
+h3{
+    font-size: 10px;
+}
+
+.questionContent{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border:1px solid #bbbbbb10;
+    word-wrap: break-word;
+    margin: 10px;
+    width: 90%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    background-color:#bbbbbb10;
+    font-family: "DIN Next W01 Light";
+    line-height: 1.4;
+    font-size: 24px;
+}
+
+.edit{
+    width: 50px;
+    height: 30px;
+    padding: 0px;
+}
+.delete{
+    width: 60px;
+    height: 30px;
+    padding: 0px;
+}
+
+.total__div-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: inherit;
+}
+
+.answer {
+    padding: 2px;
+}
+
+.answerDetail__container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border:1px solid #bbbbbb10;
+    word-wrap: break-word;
+    margin: 10px;
+    width: 81%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    background-color:#bbbbbb10;
+    font-family: "DIN Next W01 Light";
+    line-height: 1.4;
+    font-size: 24px;
+}
+
+.answerDetail__container > p {
+    font-size: 20px;
+}

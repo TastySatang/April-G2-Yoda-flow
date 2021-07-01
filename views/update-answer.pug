@@ -2,11 +2,17 @@ extends layout.pug
 
 include utils.pug
 
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/question.css")
+
+
 block content
     +errorList(errors)
-    form(action=`/questions/${answer.Question.id}/answer/${answer.id}/edit` method="post")
-        input(type="hidden" name="_csrf" value=csrfToken)
-        +formfield("content", "Enter a Answer Here: ", answer.content, "textarea")
-        button Submit
-    button
-       a(href=`/questions/${answer.Question.id}`) Cancel
+    div(class="form__container-answer")
+      form(action=`/questions/${answer.Question.id}/answer/${answer.id}/edit` method="post" class="form__inputs-answer")
+          input(type="hidden" name="_csrf" value=csrfToken)
+          +formfield("content", "Enter a Answer Here: ", answer.content, "textarea")
+          button(class="qa__button form__container__button") Submit
+      button(class="qa__button cancel form__container__button")
+        a(href=`/questions/${answer.Question.id}`) Cancel

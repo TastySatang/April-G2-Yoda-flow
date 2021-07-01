@@ -1,29 +1,37 @@
 extends layout
 
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/question.css")
+
+
 block content
     div
-        button
-            a(href="/questions/") Questions
-    div
-        h1= question.title
-        h3=  `Asked by: ${question.User.name}`
-        h3=  `Asked at: ${question.createdAt}`
-
-            ul
-                li= question.content
-        if user === question.userId
-            button
-                a(href=`/questions/${question.id}/edit`) Edit
-            form(action=`/questions/${question.id}` method="post")
-                button(type="submit") Delete
-        button
-            a(href=`/questions/${question.id}/answer/new`) Answer
-    div
-        each answer in answers
-            li= answer.content
-                p= `Answered by: ${answer.User.name}`
-                if user === answer.userId
-                    button
-                        a(href=`/questions/${question.id}/answer/${answer.id}/edit`) Edit
-                    form(action=`/questions/${question.id}/answer/${answer.id}` method="post")
-                        button(type="submit") Delete
+        button(class="qa__button" id="ask__button")
+            a(href="/questions/") Back To All Questions
+    div(class="questionDetail")
+        div(class="questionDetail__container")
+            h1= question.title
+            h3=  `Asked by: ${question.User.name}`
+            div(class="questionContent")
+                p= question.content
+            div(class="total__div-row")
+                if user === question.userId
+                    div(class="button-row")
+                        button(class="qa__button edit questionEdit")
+                            a(href=`/questions/${question.id}/edit`) Edit
+                        form(action=`/questions/${question.id}` method="post")
+                            button(class="qa__button delete questionDelete" type="submit") Delete
+                div
+                    button(class="qa__button answer" id="questionAnswer__button")
+                        a(href=`/questions/${question.id}/answer/new`) Answer
+            each answer in answers
+                div(class="answerDetail__container")
+                    p= answer.content
+                    h3= `Answered by: ${answer.User.name}`
+                        if user === answer.userId
+                            div(class="button-row")
+                                button(class="qa__button edit")
+                                    a(href=`/questions/${question.id}/answer/${answer.id}/edit`) Edit
+                                form(action=`/questions/${question.id}/answer/${answer.id}` method="post")
+                                    button(class="qa__button delete" type="submit") Delete

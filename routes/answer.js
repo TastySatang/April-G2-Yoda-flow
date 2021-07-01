@@ -78,7 +78,7 @@ router.get('/questions/:questionId(\\d+)/answer/:answerId(\\d+)/edit', requireAu
             // question
         })
     } else {
-        res.send('403 Forbidden')
+        res.send(403)
     }
 }))
 
@@ -111,7 +111,7 @@ router.post('/questions/:questionId(\\d+)/answer/:answerId(\\d+)/edit', requireA
             answer
         })
     }
-    
+
 }))
 
 module.exports = router;

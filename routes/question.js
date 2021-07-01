@@ -111,7 +111,7 @@ router.get('/:id(\\d+)/edit', csrfProtection, requireAuth, questionValidator, as
             csrfToken: req.csrfToken()
         })
     } else {
-        res.send('403 Forbidden')
+        res.send(403)
     }
 }))
 
