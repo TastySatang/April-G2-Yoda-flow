@@ -73,7 +73,7 @@ router.get('/questions/:questionId(\\d+)/answer/:answerId(\\d+)/edit', requireAu
     if (req.session.auth.userId === answer.userId) {
         res.render('update-answer', {
             csrfToken: req.csrfToken(),
-            title: "Update-Yoda-Flow",
+            title: "Update Answer Yoda Flow",
             answer,
             // question
         })
@@ -105,7 +105,7 @@ router.post('/questions/:questionId(\\d+)/answer/:answerId(\\d+)/edit', requireA
     } else {
         const errors = validationErrors.array().map((error) => error.msg);
         res.render('update-answer', {
-            title: "Update-Yoda-Flow",
+            title: "Update Answer Yoda Flow",
             csrfToken: req.csrfToken(),
             errors,
             answer
