@@ -158,6 +158,8 @@ a{
 
 h3{
     font-size: 10px;
+    margin: 1px 5px;
+    padding: 2px
 }
 
 .questionContent{
@@ -166,10 +168,10 @@ h3{
     box-sizing: border-box;
     border:1px solid #bbbbbb10;
     word-wrap: break-word;
-    margin: 10px;
+    margin:  10px 10px 0px 10px;
     width: 90%;
     height: 100%;
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
     border-radius: 7px;
     background-color:#bbbbbb10;
     font-family: "DIN Next W01 Light";
@@ -193,6 +195,8 @@ h3{
     flex-direction: row;
     justify-content: space-between;
     width: inherit;
+    box-sizing: border-box;
+    padding: 0px 10px 10px 10px;
 }
 
 .answer {
@@ -218,4 +222,18 @@ h3{
 
 .answerDetail__container > p {
     font-size: 20px;
+    margin: 1px 5px;
+    padding: 2px
+}
+
+h1{
+    margin: 1px 5px;
+    padding: 2px
+}
+
+.questionTitle{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 10px;
 }
