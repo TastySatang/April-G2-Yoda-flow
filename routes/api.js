@@ -65,17 +65,30 @@ router.post(
   })
 );
 
-router.put(
+router.patch(
   "/questions/:id(\\d+)/votes/:vid(\\d+)",
+  voteValidator[2],
   asyncHandler(async (req, res) => {
     const voteId = req.params.vid;
-    const { userId, questionId, upvote } = req.body;
+    const { upvote } = req.body;
 
-    const vote = await db.QuestionVote.findByPk(voteId);
+    let errors = [];
+    const validationErrors = validationResult(req);
 
-    await vote.update({ userId, questionId, upvote });
+    if (validationErrors.isEmpty()) {
+      const vote = await db.QuestionVote.findByPk(voteId);
 
-    res.json({ vote });
+      await vote.update({ upvote });
+
+      res.json({ vote });
+    } else {
+      errors = validationErrors.array().map((error) => error.msg);
+      const err = Error("Bad request.");
+      err.errors = errors;
+      err.status = 400;
+      err.title = "Bad request.";
+      res.json({ err });
+    }
   })
 );
 
@@ -87,6 +100,11 @@ router.delete(
     if (vote) {
       await vote.destroy();
       res.status(204).end();
+    } else {
+      const err = Error("Bad request.");
+      err.status = 400;
+      err.title = "Bad request.";
+      res.json({ err });
     }
   })
 );
