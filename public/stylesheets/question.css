@@ -260,3 +260,45 @@ h1 {
 .active {
   background-color: green;
 }
+
+.vote__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+.questionAndVote__container {
+  display: flex;
+}
+
+.vote__container > span {
+  display: inline-block;
+  text-align: center;
+}
+
+#question_downVote.active img {
+  content: url("/downvote_active.png");
+}
+
+#question_upVote.active img {
+  content: url("/upvote_active.png");
+}
+
+#question_downVote img {
+  width: 20px;
+  height: 20px;
+  content: url("/downvote_null.png");
+}
+
+#question_upVote img {
+  width: 20px;
+  height: 20px;
+  content: url("/upvote_null.png");
+}
+
+#question_downVote,
+#question_upVote {
+  background: transparent;
+  border: none;
+}

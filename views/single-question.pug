@@ -15,20 +15,26 @@ block content
             div(class="questionTitle")
                 h1= question.title
                 h3=  `Asked by: ${question.User.name}`
-                div
-                    div
+                div(class="questionAndVote__container")
+                    div(class="vote__container")
                         if(vote === null)
-                            button(id="question_upVote") up vote
+                            button(id="question_upVote")
+                                img
                             span(id="question-vote__count") 0
-                            button(id="question_downVote") down vote
+                            button(id="question_downVote")
+                                img
                         else if(vote.upvote  === false)
-                            button(id="question_upVote") up vote
+                            button(id="question_upVote")
+                                img
                             span(id="question-vote__count") 0
-                            button(id="question_downVote" class="active") down vote
+                            button(id="question_downVote" class="active")
+                                img
                         else
-                            button(id="question_upVote" class="active") up vote
+                            button(id="question_upVote" class="active")
+                                img
                             span(id="question-vote__count") 0
-                            button(id="question_downVote") down vote
+                            button(id="question_downVote")
+                                img
                     div(class="questionContent")
                         p= question.content
             div(class="total__div-row")
