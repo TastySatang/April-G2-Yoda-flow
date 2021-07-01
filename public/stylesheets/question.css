@@ -11,23 +11,30 @@ a{
 .qa__button{
     background-color: #DAAF59;
     color: black;
-    padding: 10px 32px 7px;
+    padding: 10px 15px 7px;
     border: 1px solid #DAAF59;
     border-radius: 4px;
     font-family: 'Star Jedi Outline', sans-serif;
+    margin: 5px;
+    cursor: pointer;
 }
 
 .question__list{
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    padding: 5px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
     font-family: 'StarJedi Special Edition';
-    color: rgb(0, 174, 255)
+    color: rgb(0, 174, 255);
+    border-bottom: 1px solid #bbbbbb10;
+    align-items: center;
+
 }
 
 .question__list > a{
     font-size: 24px;
+    overflow-x: hidden;
 }
 
 .question__list > a:hover{
@@ -36,4 +43,13 @@ a{
 
 #ask__button > a:hover{
     font-size: 30px;
+}
+
+.questionList__container{
+    display: flex;
+    flex-direction: column;
+    background-color: #181818;
+    margin: 10px;
+    border-radius: 7px;
+    width: 60%;
 }
