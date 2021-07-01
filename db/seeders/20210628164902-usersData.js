@@ -9,31 +9,47 @@ module.exports = {
           name: "demo",
           email: "demo@demo.com",
           hashedPassword:
-            "$2a$10$W0dMKHhiMCNCo2pIqvaVq.cgoLeD5UMhYDD69jo6vCmbYUbMKMm6.",
+            "$2a$10$I5jnHhIY14y1ntVQ1hGxHevJV5GYmb04ko.fLNefFDuDCuPyYrBAq",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Test1",
-          email: "Test1@Test1.com",
+          name: "Obi Wan Kenobi",
+          email: "obiwan@kenobi.com",
           hashedPassword:
-            "$2a$10$W0dMKHhiMCNCo2pIqvaVq.cgoLeD5UMhYDD69jo6vCmbYUbMKMm6.",
+            "$2a$10$I5jnHhIY14y1ntVQ1hGxHevJV5GYmb04ko.fLNefFDuDCuPyYrBAq",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Test2",
-          email: "Test2@Test2.com",
+          name: "Darth Vader",
+          email: "vader@vader.com",
           hashedPassword:
-            "$2a$10$W0dMKHhiMCNCo2pIqvaVq.cgoLeD5UMhYDD69jo6vCmbYUbMKMm6.",
+            "$2a$10$I5jnHhIY14y1ntVQ1hGxHevJV5GYmb04ko.fLNefFDuDCuPyYrBAq",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Test3",
-          email: "Test3@Test3.com",
+          name: "Leslie Knopes",
+          email: "leslie@pawnee.gov",
           hashedPassword:
-            "$2a$10$W0dMKHhiMCNCo2pIqvaVq.cgoLeD5UMhYDD69jo6vCmbYUbMKMm6.",
+            "$2a$10$I5jnHhIY14y1ntVQ1hGxHevJV5GYmb04ko.fLNefFDuDCuPyYrBAq",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Rick Sanchez",
+          email: "rick@genius.com",
+          hashedPassword:
+            "$2a$10$I5jnHhIY14y1ntVQ1hGxHevJV5GYmb04ko.fLNefFDuDCuPyYrBAq",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Jean Luc-Picard",
+          email: "jean@enterprise.fed",
+          hashedPassword:
+            "$2a$10$I5jnHhIY14y1ntVQ1hGxHevJV5GYmb04ko.fLNefFDuDCuPyYrBAq",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
