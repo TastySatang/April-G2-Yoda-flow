@@ -8,7 +8,7 @@ a{
     text-decoration: none;
 }
 
-.qa-button{
+.qa__button{
     background-color: #DAAF59;
     color: black;
     padding: 10px 32px 7px;
@@ -17,7 +17,7 @@ a{
     font-family: 'Star Jedi Outline', sans-serif;
 }
 
-.question-list{
+.question__list{
     display: flex;
     flex-direction: column;
     margin-top: 10px;
@@ -26,6 +26,14 @@ a{
     color: rgb(0, 174, 255)
 }
 
-.question-list > a{
+.question__list > a{
     font-size: 24px;
+}
+
+.question__list > a:hover{
+    color: rgb(0, 21, 255)
+}
+
+#ask__button > a:hover{
+    font-size: 30px;
 }

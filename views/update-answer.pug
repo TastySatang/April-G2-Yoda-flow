@@ -12,6 +12,6 @@ block content
     form(action=`/questions/${answer.Question.id}/answer/${answer.id}/edit` method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
         +formfield("content", "Enter a Answer Here: ", answer.content, "textarea")
-        button(class="qa-button") Submit
-    button(class="qa-button")
+        button(class="qa__button update__button") Submit
+    button(class="qa__button cancel")
        a(href=`/questions/${answer.Question.id}`) Cancel
