@@ -274,15 +274,11 @@ h1 {
   flex-direction: column;
   margin-top: 10px;
   justify-content: space-between;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .questionAndVote__container {
   display: flex;
-}
-
-.vote__container > span {
-  display: inline-block;
-  text-align: center;
 }
 
 #question_downVote.active img {
