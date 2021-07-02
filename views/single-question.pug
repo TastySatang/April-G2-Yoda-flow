@@ -14,7 +14,7 @@ block content
                 h3=  `Asked by: ${question.User.name}`
                 div(class="questionAndVote__container")
                     div(class="vote__container")
-                        if(vote === null)
+                        if(vote === null || vote === undefined)
                             button(id="question_upVote")
                                 img
                             span(id="question-vote__count") 0
