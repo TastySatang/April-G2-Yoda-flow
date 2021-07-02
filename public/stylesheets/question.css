@@ -39,19 +39,20 @@ a {
   margin: 10px;
   padding: 10px;
   font-family: "StarJedi Special Edition";
-  color: rgb(0, 174, 255);
+  color: whitesmoke;
   border-bottom: 1px solid #bbbbbb10;
   align-items: center;
+  letter-spacing: 3px;
 }
 
 .question__list > a {
   font-size: 24px;
-  overflow-x: hidden;
-  width: 90%;
+  word-wrap: break-word;
+  width: 80%;
 }
 
 .question__list > a:hover {
-  color: hsl(199, 100%, 68%);
+  color: hsla(199, 100%, 67%, 0.87);
 }
 
 #ask__button > a:hover {
@@ -274,6 +275,7 @@ h1 {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
+  font-size: 11px;
   justify-content: space-between;
   text-align: center;
 }
