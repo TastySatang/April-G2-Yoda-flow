@@ -20,7 +20,7 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const questions = await db.Question.findAll({
-      limit: 10,
+      // limit: 10,
       order: [["updatedAt", "DESC"]],
     });
 
