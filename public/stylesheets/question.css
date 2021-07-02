@@ -47,6 +47,7 @@ a {
 .question__list > a {
   font-size: 24px;
   overflow-x: hidden;
+  width: 90%;
 }
 
 .question__list > a:hover {
@@ -274,6 +275,7 @@ h1 {
   flex-direction: column;
   margin-top: 10px;
   justify-content: space-between;
+  text-align: center;
 
 }
 
