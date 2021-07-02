@@ -1,83 +1,89 @@
 @font-face {
-    font-family: 'Star Jedi Outline';
-    src: url('/Starjout.ttf') format('truetype');
-  }
+  font-family: "Star Jedi Outline";
+  src: url("/Starjout.ttf") format("truetype");
+}
 @font-face {
-    font-family: 'StarJedi Special Edition';
-    src: url('/STJEDISE.TTF') format('truetype');
-  }
-
-
-a{
-    text-decoration: none;
-    display: block;
+  font-family: "StarJedi Special Edition";
+  src: url("/STJEDISE.TTF") format("truetype");
 }
 
-.qa__button{
-    background-color: #DAAF59;
-    color: black;
-    padding: 10px 15px 7px;
-    border: 1px solid #DAAF59;
-    border-radius: 4px;
-    font-family: 'Star Jedi Outline', sans-serif;
-    margin: 5px;
-    cursor: pointer;
+a {
+  text-decoration: none;
+  display: block;
 }
 
-.question__list{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 10px;
-    padding: 10px;
-    font-family: 'StarJedi Special Edition';
-    color: rgb(0, 174, 255);
-    border-bottom: 1px solid #bbbbbb10;
-    align-items: center;
-
+a {
+  text-decoration: none;
+  display: block;
 }
 
-.question__list > a{
-    font-size: 24px;
-    overflow-x: hidden;
+a {
+  text-decoration: none;
 }
 
-.question__list > a:hover{
-    color: rgb(0, 21, 255)
+.qa__button {
+  background-color: #daaf59;
+  color: black;
+  padding: 10px 15px 7px;
+  border: 1px solid #daaf59;
+  border-radius: 4px;
+  font-family: "Star Jedi Outline", sans-serif;
+  margin: 5px;
+  cursor: pointer;
 }
 
-#ask__button > a:hover{
-    font-size: 30px;
+.question__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 10px;
+  font-family: "StarJedi Special Edition";
+  color: rgb(0, 174, 255);
+  border-bottom: 1px solid #bbbbbb10;
+  align-items: center;
 }
 
-.questionList__container{
-    display: flex;
-    flex-direction: column;
-    background-color: #181818;
-    margin: 10px;
-    border-radius: 7px;
-    width: 60%;
+.question__list > a {
+  font-size: 24px;
+  overflow-x: hidden;
 }
 
+.question__list > a:hover {
+  color: rgb(0, 21, 255);
+}
+
+#ask__button > a:hover {
+  font-size: 30px;
+}
+
+.questionList__container {
+  display: flex;
+  flex-direction: column;
+  background-color: #181818;
+  margin: 10px;
+  border-radius: 7px;
+  width: 60%;
+}
 
 #content {
   width: 85%;
   padding: 15px 9px;
   margin-bottom: 10px;
   font-size: 16px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: black;
   border-radius: 7px;
   height: 200px;
 }
 
 #title {
-    width: 85%;
-    font-size: 16px;
-    background-color: #FFFFFF;
-    color: black;
-    border-radius: 7px;
-    font-family: 'StarJedi Special Edition';
+  width: 85%;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: black;
+  border-radius: 7px;
+  font-family: "StarJedi Special Edition";
 }
 
 .form__container-new {
@@ -99,7 +105,7 @@ a{
 }
 
 .form__container-answer {
-  font-family: 'StarJedi Special Edition';
+  font-family: "StarJedi Special Edition";
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -117,145 +123,186 @@ a{
   border-radius: 7px;
 }
 
-.qa-button-answer{
-    background-color: #DAAF59;
-    color: black;
-    padding: 10px 15px 7px;
-    border: 1px solid #DAAF59;
-    border-radius: 4px;
-    font-family: 'Star Jedi Outline', sans-serif;
-    margin: 5px;
-    cursor: pointer;
+.qa-button-answer {
+  background-color: #daaf59;
+  color: black;
+  padding: 10px 15px 7px;
+  border: 1px solid #daaf59;
+  border-radius: 4px;
+  font-family: "Star Jedi Outline", sans-serif;
+  margin: 5px;
+  cursor: pointer;
 }
 
 .form__container-answer label {
-    color:  rgb(0, 174, 255);
+  color: rgb(0, 174, 255);
 }
 
 .delete:hover,
 .cancel:hover {
-    background-color: #990000;
-    border-color: #990000;
+  background-color: #990000;
+  border-color: #990000;
 }
 
-.button-row{
-    display: flex;
-    flex-direction: row;
+.button-row {
+  display: flex;
+  flex-direction: row;
 }
 
-.questionDetail{
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    background-color: #181818;
-    height: 100%;
-    margin-top: 3em;
-    border-radius: 7px;
-    align-items: flex-start;
-    width: 85%;
+.questionDetail {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #181818;
+  height: 100%;
+  margin-top: 3em;
+  border-radius: 7px;
+  align-items: flex-start;
+  width: 85%;
 }
 
-.questionDetail__container{
-    display: flex;
-    flex-direction: column;
-    width: 90%
+.questionDetail__container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
 }
 
-
-h3{
-    font-size: 10px;
-    margin: 1px 5px;
-    padding: 2px
+h3 {
+  font-size: 10px;
+  margin: 1px 5px;
+  padding: 2px;
 }
 
-.questionContent{
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    border:1px solid #bbbbbb10;
-    word-wrap: break-word;
-    margin:  10px 10px 0px 10px;
-    width: 90%;
-    height: 100%;
-    padding: 10px 10px 0px 10px;
-    border-radius: 7px;
-    background-color:#bbbbbb10;
-    font-family: "DIN Next W01 Light";
-    line-height: 1.4;
-    font-size: 24px;
+.questionContent {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: 1px solid #bbbbbb10;
+  word-wrap: break-word;
+  margin: 10px 10px 0px 10px;
+  width: 90%;
+  height: 100%;
+  padding: 10px 10px 0px 10px;
+  border-radius: 7px;
+  background-color: #bbbbbb10;
+  font-family: "DIN Next W01 Light";
+  line-height: 1.4;
+  font-size: 24px;
 }
 
-.edit{
-    width: 50px;
-    height: 30px;
-    padding: 0px;
+.edit {
+  width: 50px;
+  height: 30px;
+  padding: 0px;
 }
 
-.edit:hover{
-    background-color: #588443;
-    border-color: #588443;
+.edit:hover {
+  background-color: #588443;
+  border-color: #588443;
 }
 
-.delete{
-    width: 60px;
-    height: 30px;
-    padding: 0px;
+.delete {
+  width: 60px;
+  height: 30px;
+  padding: 0px;
 }
 
 .total__div-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: inherit;
-    box-sizing: border-box;
-    padding: 0px 10px 10px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: inherit;
+  box-sizing: border-box;
+  padding: 0px 10px 10px 10px;
 }
 
 .answer {
-    padding: 2px;
+  padding: 2px;
 }
 
 .answerDetail__container {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    border:1px solid #bbbbbb10;
-    word-wrap: break-word;
-    margin: 10px;
-    width: 90%;
-    height: 100%;
-    padding: 10px;
-    border-radius: 7px;
-    background-color:#bbbbbb10;
-    font-family: "DIN Next W01 Light";
-    line-height: 1.4;
-    font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: 1px solid #bbbbbb10;
+  word-wrap: break-word;
+  margin: 10px;
+  width: 90%;
+  height: 100%;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: #bbbbbb10;
+  font-family: "DIN Next W01 Light";
+  line-height: 1.4;
+  font-size: 24px;
 }
 
 .answerDetail__container > p {
-    font-size: 20px;
-    margin: 1px 5px;
-    padding: 2px
+  font-size: 20px;
+  margin: 1px 5px;
+  padding: 2px;
 }
 
-h1{
-    margin: 1px 5px;
-    padding: 2px
+h1 {
+  margin: 1px 5px;
+  padding: 2px;
 }
 
-.questionTitle{
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    padding: 10px;
+.questionTitle {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 10px;
 }
 
 .answer:hover {
-    background-color: #15f2fd;
-    border-color: #15f2fd;
+  background-color: #15f2fd;
+  border-color: #15f2fd;
 }
 
 .submit:hover {
-    background-color: #2FF924;
-    border-color: #2FF924;;
+  background-color: #2ff924;
+  border-color: #2ff924;
+}
+
+.active {
+  background-color: green;
+}
+
+.vote__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  justify-content: space-between;
+
+}
+
+.questionAndVote__container {
+  display: flex;
+}
+
+#question_downVote.active img {
+  content: url("/downvote_active.png");
+}
+
+#question_upVote.active img {
+  content: url("/upvote_active.png");
+}
+
+#question_downVote img {
+  width: 20px;
+  height: 20px;
+  content: url("/downvote_null.png");
+}
+
+#question_upVote img {
+  width: 20px;
+  height: 20px;
+  content: url("/upvote_null.png");
+}
+
+#question_downVote,
+#question_upVote {
+  background: transparent;
+  border: none;
 }
