@@ -53,8 +53,9 @@ window.addEventListener("load", (event) => {
       });
       downVoteButton.classList.remove("active");
       upVoteButton.classList.add("active");
+
     } else {
-      await fetch(`/api/questions/${questionId}/votes`, {
+      const fetchAnswer = await fetch(`/api/questions/${questionId}/votes`, {
         method: "post",
         headers: {
           Accept: "application/json",
@@ -62,6 +63,11 @@ window.addEventListener("load", (event) => {
         },
         body: JSON.stringify({ upvote: true }),
       });
+
+      if (fetchAnswer.redirected) {
+        alert('YOU HAVE TO LOG IN')
+        return;
+      }
       upVoteButton.classList.add("active");
     }
     setVoteCount();
@@ -89,7 +95,7 @@ window.addEventListener("load", (event) => {
       downVoteButton.classList.add("active");
       upVoteButton.classList.remove("active");
     } else {
-      await fetch(`/api/questions/${questionId}/votes`, {
+      const fetchAnswer = await fetch(`/api/questions/${questionId}/votes`, {
         method: "post",
         headers: {
           Accept: "application/json",
@@ -97,6 +103,10 @@ window.addEventListener("load", (event) => {
         },
         body: JSON.stringify({ upvote: false }),
       });
+      if (fetchAnswer.redirected) {
+        alert('YOU HAVE TO LOG IN')
+        return;
+      }
       downVoteButton.classList.add("active");
     }
     setVoteCount();

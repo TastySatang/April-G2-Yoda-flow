@@ -47,10 +47,11 @@ a {
 .question__list > a {
   font-size: 24px;
   overflow-x: hidden;
+  width: 90%;
 }
 
 .question__list > a:hover {
-  color: rgb(0, 21, 255);
+  color: hsl(199, 100%, 68%);
 }
 
 #ask__button > a:hover {
@@ -274,7 +275,7 @@ h1 {
   flex-direction: column;
   margin-top: 10px;
   justify-content: space-between;
-
+  text-align: center;
 }
 
 .questionAndVote__container {
