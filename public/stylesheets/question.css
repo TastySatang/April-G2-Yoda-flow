@@ -1,7 +1,15 @@
-@import url("http://fonts.cdnfonts.com/css/starjedi-special-edition");
+@font-face {
+  font-family: "Star Jedi Outline";
+  src: url("/Starjout.ttf") format("truetype");
+}
 @font-face {
   font-family: "StarJedi Special Edition";
-  src: local("StarJedi Special Edition") format("truetype");
+  src: url("/STJEDISE.TTF") format("truetype");
+}
+
+a {
+  text-decoration: none;
+  display: block;
 }
 
 a {
