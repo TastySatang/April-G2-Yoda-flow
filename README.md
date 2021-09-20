@@ -16,15 +16,28 @@ Check the [Wiki](https://github.com/TastySatang/April-G2-Yoda-flow/wiki) for [AP
 
 ## Screenshots
 
-User Authentications
+### User Authentications
 
+#### Login
 ![](https://github.com/TastySatang/April-G2-Yoda-flow/blob/main/public/assets/Log%20in.png)
+#### Logout
 ![](https://github.com/TastySatang/April-G2-Yoda-flow/blob/main/public/assets/Log%20out.png)
+#### Signup
 ![](https://github.com/TastySatang/April-G2-Yoda-flow/blob/main/public/assets/Signup.png)
 
-Asking and answering questions
+### Asking and answering questions
+
+#### Posting an answer
 ![](https://github.com/TastySatang/April-G2-Yoda-flow/blob/main/public/assets/answer.png)
+#### Posting a question
 ![](https://github.com/TastySatang/April-G2-Yoda-flow/blob/main/public/assets/Ask.png)
+
+### Questions
+
+#### Browse
+![](https://github.com/TastySatang/April-G2-Yoda-flow/blob/main/public/assets/Browse.png)
+#### Question details page
+![](https://github.com/TastySatang/April-G2-Yoda-flow/blob/main/public/assets/question.png)
 
 ## Installing
 1. Clone this repository (only this branch)
