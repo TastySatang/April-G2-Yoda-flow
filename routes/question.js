@@ -33,8 +33,10 @@ router.get(
   requireAuth,
   csrfProtection,
   asyncHandler(async (req, res) => {
+    const question = db.Question.build()
     res.render("new-question", {
       title: "New Question Yoda Flow",
+      question,
       csrfToken: req.csrfToken(),
     });
   })
@@ -49,19 +51,21 @@ router.post(
     const { title, content } = req.body;
 
     const validationErrors = validationResult(req);
-    if (validationErrors.isEmpty()) {
-      const question = await db.Question.build({
-        userId: res.locals.user.id,
-        title,
-        content,
-      });
+    const question = await db.Question.build({
+      userId: res.locals.user.id,
+      title,
+      content,
+    });
 
+    if (validationErrors.isEmpty()) {
       await question.save();
       req.session.save(() => res.redirect("/questions"));
+
     } else {
       const errors = validationErrors.array().map((error) => error.msg);
       res.render("new-question", {
         title: "New Question Yoda Flow",
+        question,
         csrfToken: req.csrfToken(),
         errors,
       });
