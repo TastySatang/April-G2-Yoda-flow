@@ -22,7 +22,7 @@ npm install
 5. Setup your PostgreSQL user, password it matches your .env file
 7. Migrate your database, seed your database and run the app
 
-``bash
+```bash
 npx sequelize-cli db:init
 ```
 
