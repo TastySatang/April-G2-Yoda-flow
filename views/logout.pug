@@ -2,7 +2,7 @@ extends layout
 
 block content
   div(class='form__container')
-    form(class='form__inputs' action="/logout" method="post")
+    form(class='form__inputs logout_form' action="/logout" method="post")
       button(class='form__container__button' type='submit') Log Out
-      button(class='form__container__button')
-        a(id='cancel' href="/") Cancel
+      a(id='cancel' href="/")
+        button(class='form__container__button' type="button") Cancel
