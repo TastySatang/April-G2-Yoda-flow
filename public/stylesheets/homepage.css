@@ -13,6 +13,8 @@ body{
   background-attachment: fixed;
   background-repeat: no-repeat;
   z-index: -1;
+  position: relative;
+  min-height: 100vh;
 }
 
 .navcontainer {
@@ -108,9 +110,10 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-position: relative;
+/* position: relative; */
 top: 60px;
-padding-bottom: 60px;
+padding-bottom: 90px;
+padding-top: 5rem;
 }
 
 .error__container {
