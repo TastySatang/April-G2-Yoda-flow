@@ -23,10 +23,6 @@ npm install
 7. Migrate your database, seed your database and run the app
 
 ```bash
-npx sequelize-cli db:init
-```
-
-```bash
 npx sequelize-cli db:create
 ```
 
