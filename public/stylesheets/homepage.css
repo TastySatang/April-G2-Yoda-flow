@@ -212,4 +212,13 @@ label{
 
 #cancel {
   text-decoration: none;
+  width: 85%;
+}
+
+#cancel .form__container__button{
+    width: 100%;
+}
+
+.logout_form{
+    padding-top: 25px;
 }
