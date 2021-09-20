@@ -15,9 +15,12 @@ Yodaflow is an web-ap that allows users to ask and answer questions related to s
 ## Installing
 1. Clone this repository (only this branch)
 2. Install dependencies
-3. Create a .env file based on the example with proper setting for your development environment
-4. Setup your PostgreSQL user, passwor and database and make sure it matches your .env file
-5. Migrate your database, seed your database and run the app
+```bash
+npm install
+```
+4. Create a .env file based on the example with proper setting for your development environment
+5. Setup your PostgreSQL user, passwor and database and make sure it matches your .env file
+6. Migrate your database, seed your database and run the app
 ```bash
 npx sequelize-cli db:migrate
 ```
