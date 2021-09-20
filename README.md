@@ -12,6 +12,8 @@ Yodaflow is an web-ap that allows users to ask and answer questions related to s
 * CSS3
 * HTML5
 
+Check the [wiki](https://github.com/TastySatang/April-G2-Yoda-flow/wiki) for API documentation, Database Schema, Features, Frontend Routes, and User Stories
+
 ## Installing
 1. Clone this repository (only this branch)
 2. Install dependencies
