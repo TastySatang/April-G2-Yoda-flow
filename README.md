@@ -16,6 +16,16 @@ Check the [Wiki](https://github.com/TastySatang/April-G2-Yoda-flow/wiki) for [AP
 
 ## Screenshots
 
+User Authentications
+
+![](https://github.com/TastySatang/April-G2-Yoda-flow/blob/main/public/assets/Log%20in.png)
+![](https://github.com/TastySatang/April-G2-Yoda-flow/blob/main/public/assets/Log%20out.png)
+![](https://github.com/TastySatang/April-G2-Yoda-flow/blob/main/public/assets/Signup.png)
+
+Asking and answering questions
+![](https://github.com/TastySatang/April-G2-Yoda-flow/blob/main/public/assets/answer.png)
+![](https://github.com/TastySatang/April-G2-Yoda-flow/blob/main/public/assets/Ask.png)
+
 ## Installing
 1. Clone this repository (only this branch)
 2. Install dependencies
@@ -41,3 +51,5 @@ npx sequelize-cli db:seed:all
 ```bash
 npm start
 ```
+
+
