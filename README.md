@@ -1,6 +1,31 @@
-# Express Project Skeleton
+# Yoda-flow
 
-Use this project skeleton as a starting point for structuring your app. Things to note
-* Sequelize configuration has not yet been added -- you will need to set that up yourself
-* You may find yourself wanting to use javascript -- js files can be added in `public/javascripts` and should be appended to the Pug templates as needed
-* CSS files can go in `public/stylesheets` and also will need to be added to Pug templates
+Yodaflow is an web-ap that allows users to ask and answer questions related to starwars
+
+### Technologies used
+
+* PostgreSQL
+* Express
+* Sequelize
+* Pug
+* JavaScript
+* CSS3
+* HTML5
+
+## Installing
+1. Clone this repository (only this branch)
+2. Install dependencies
+3. Create a .env file based on the example with proper setting for your development environment
+4. Setup your PostgreSQL user, passwor and database and make sure it matches your .env file
+5. Migrate your database, seed your database and run the app
+```bash
+npx sequelize-cli db:migrate
+```
+
+```bash
+npx sequelize-cli db:seed:all
+```
+
+```bash
+npm start
+```
