@@ -10,8 +10,8 @@ block content
         div(class='form__container-new')
             form(action="/questions/new" method="POST" class='form__inputs-new')
                 input(type="hidden" name="_csrf" value=csrfToken)
-                +formfield("title", "Enter A Title Here: ", title, "text")
-                +formfield("content", "Enter a Question Here: ", content, "textarea")
+                +formfield("title", "Enter A Title Here: ", question.title, "text")
+                +formfield("content", "Enter a Question Here: ", question.content, "textarea")
                 button(class="qa__button form__container__button submit" id="question-submt") Submit
             button(class="qa__button cancel form__container__button")
                 a(href="/questions/") Cancel
