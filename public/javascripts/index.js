@@ -1,3 +1,3 @@
 window.addEventListener("load", (event) => {
-  console.log("Inde is working");
+  // console.log("Inde is working");
 });

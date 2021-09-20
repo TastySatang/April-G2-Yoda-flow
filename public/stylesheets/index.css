@@ -47,3 +47,20 @@ h1 {
     font-size: 20px;
     text-align: center;
 }
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #555555;
+    margin-top: -4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer>div {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
