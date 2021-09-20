@@ -14,6 +14,8 @@ Yodaflow is an web-ap that allows users to ask and answer questions related to s
 
 Check the [Wiki](https://github.com/TastySatang/April-G2-Yoda-flow/wiki) for [API documentation](https://github.com/TastySatang/April-G2-Yoda-flow/wiki/API-Documentation), [Database Schema](https://github.com/TastySatang/April-G2-Yoda-flow/wiki/Database-Schema), [Features](https://github.com/TastySatang/April-G2-Yoda-flow/wiki/Features), [Frontend Routes](https://github.com/TastySatang/April-G2-Yoda-flow/wiki/Front-end-Routes), and [User Stories](https://github.com/TastySatang/April-G2-Yoda-flow/wiki/User-Stories)
 
+## Screenshots
+
 ## Installing
 1. Clone this repository (only this branch)
 2. Install dependencies
