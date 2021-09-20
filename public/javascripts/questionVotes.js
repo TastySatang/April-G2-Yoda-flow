@@ -1,13 +1,16 @@
 function urlToId(url) {
-  let urlParts = url.split("/");
-  const questionId = urlParts[urlParts.length - 1];
-  return questionId;
+  if (url !== undefined) {
+    let urlParts = url.split("/");
+    const questionId = urlParts[urlParts.length - 1];
+    return +questionId;
+  }
 }
 
 async function setVoteCount() {
   const questionVoteCountSpan = document.getElementById("question-vote__count");
 
   const questionId = urlToId();
+  if (questionId === undefined) return
 
   const res = await fetch(`/api/questions/${questionId}/votes`);
   const data = await res.json();
@@ -31,8 +34,7 @@ window.addEventListener("load", (event) => {
   let arrOfVoteDivs = Array.from(contianer.children).map((el) => {
     return Array.from(el.children)[1];
   });
-
-  console.log(arrOfVoteDivs);
+  if (arrOfVoteDivs[0] === undefined) return
 
   let arrOfIds = Array.from(contianer.children)
     .map((el) => {
@@ -41,6 +43,7 @@ window.addEventListener("load", (event) => {
     .map((el) => {
       return urlToId(el);
     });
+
 
   arrOfIds.forEach(async (id, idx) => {
     const res = await fetch(`/api/questions/${id}/votes`);

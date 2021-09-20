@@ -16,7 +16,8 @@ html
           a(class="button" href='/questions/new') Ask
 
         div(class='navbar__middle')
-          input(class='searchbar' type="text" placeholder="Search...")
+          form(action=`/questions/search` method="POST" class='searchform')
+            input(name='query' class='searchbar' type="text" placeholder="Search...")
         if locals.authenticated
           div(class='navbar__right')
             a(class="button button--red-hover" href="/logout") Log out

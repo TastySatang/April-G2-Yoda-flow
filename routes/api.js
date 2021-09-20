@@ -31,14 +31,13 @@ router.post(
   requireAuth,
   voteValidator,
   asyncHandler(async (req, res) => {
-    console.log("INSIDE THE ROUT");
     const { upvote } = req.body;
     const questionId = req.params.id;
     const { userId } = req.session.auth;
 
     let errors = [];
     const validationErrors = validationResult(req);
-    console.log(validationErrors.isEmpty());
+    // console.log(validationErrors.isEmpty());
     if (validationErrors.isEmpty()) {
       let user = await db.QuestionVote.findAll({
         where: {
@@ -70,7 +69,6 @@ router.put(
   requireAuth,
   voteValidator,
   asyncHandler(async (req, res) => {
-    console.log("INSIDE PU");
     const { upvote } = req.body;
     const questionId = req.params.id;
     const { userId } = req.session.auth;
@@ -104,7 +102,6 @@ router.delete(
   "/questions/:id(\\d+)/votes/",
   requireAuth,
   asyncHandler(async (req, res) => {
-    console.log("inside the route");
     const questionId = req.params.id;
     const { userId } = req.session.auth;
     const vote = await db.QuestionVote.findOne({

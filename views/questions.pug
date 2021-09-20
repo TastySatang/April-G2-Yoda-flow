@@ -10,7 +10,12 @@ append head
 block content
     body
         div(class="questionList__container")
-            each question in questions
+            if questions.length !== 0
+                each question in questions
+                    li(class="question__list")
+                        a(href=`/questions/${question.id}`) #{question.title}
+                        div(class="vote__container")
+            else
                 li(class="question__list")
-                    a(href=`/questions/${question.id}`) #{question.title}
-                    div(class="vote__container")
+                        p We couldn't find anything that matches your search...
+

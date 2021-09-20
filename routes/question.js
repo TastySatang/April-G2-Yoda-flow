@@ -29,13 +29,13 @@ router.get(
   })
 );
 
-router.get(
-  "/search/:query",
+router.post(
+  "/search",
   asyncHandler(async (req, res) => {
     const questions = await db.Question.findAll({
       where: {
         title: {
-          [Op.iLike]: `%${req.params.query}%`
+          [Op.iLike]: `%${req.body.query}%`
         }
       },
       order: [["updatedAt", 'DESC']]
@@ -43,7 +43,6 @@ router.get(
 
     res.render("questions", { title: "Yoda Flow", questions })
   })
-
 )
 
 router.get(
