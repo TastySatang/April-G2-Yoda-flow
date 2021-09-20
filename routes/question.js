@@ -1,4 +1,5 @@
 const express = require("express");
+const { Op } = require("sequelize");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const { loginUser, requireAuth } = require("../auth");
@@ -24,9 +25,26 @@ router.get(
       order: [["updatedAt", "DESC"]],
     });
 
-    res.render("questions", { questions });
+    res.render("questions", { title: "Yoda Flow", questions });
   })
 );
+
+router.get(
+  "/search/:query",
+  asyncHandler(async (req, res) => {
+    const questions = await db.Question.findAll({
+      where: {
+        title: {
+          [Op.iLike]: `%${req.params.query}%`
+        }
+      },
+      order: [["updatedAt", 'DESC']]
+    })
+
+    res.render("questions", { title: "Yoda Flow", questions })
+  })
+
+)
 
 router.get(
   "/new",
@@ -35,7 +53,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const question = db.Question.build()
     res.render("new-question", {
-      title: "New Question Yoda Flow",
+      title: "Yoda Flow",
       question,
       csrfToken: req.csrfToken(),
     });
@@ -64,7 +82,7 @@ router.post(
     } else {
       const errors = validationErrors.array().map((error) => error.msg);
       res.render("new-question", {
-        title: "New Question Yoda Flow",
+        title: "Yoda Flow",
         question,
         csrfToken: req.csrfToken(),
         errors,
@@ -100,7 +118,7 @@ router.get(
       });
 
       res.render("single-question", {
-        title: "Individual-Quesiton-Yoda-Flow",
+        title: "Yoda Flow",
         question,
         answers,
         user,
@@ -108,7 +126,7 @@ router.get(
       });
     } else {
       res.render("single-question", {
-        title: "Individual-Quesiton-Yoda-Flow",
+        title: "Yoda Flow",
         question,
         answers,
       });
