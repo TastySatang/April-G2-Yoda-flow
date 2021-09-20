@@ -26,7 +26,7 @@ npm install
 npx sequelize-cli db:init
 ```
 
-``bash
+```bash
 npx sequelize-cli db:create
 ```
 
