@@ -8,7 +8,7 @@ h1 {
 
 .grid__container {
     display:grid;
-    grid-template-columns: repeat(3, 400px);
+    grid-template-columns: repeat(2, 400px);
     font-family: 'StarJedi';
 }
 
