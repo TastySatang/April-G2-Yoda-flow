@@ -284,21 +284,21 @@ h1 {
   display: flex;
 }
 
-#question_downVote.active img {
+#question_downVote.active div {
   content: url("/downvote_active.png");
 }
 
-#question_upVote.active img {
+#question_upVote.active div {
   content: url("/upvote_active.png");
 }
 
-#question_downVote img {
+#question_downVote div {
   width: 20px;
   height: 20px;
   content: url("/downvote_null.png");
 }
 
-#question_upVote img {
+#question_upVote div {
   width: 20px;
   height: 20px;
   content: url("/upvote_null.png");

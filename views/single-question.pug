@@ -16,22 +16,22 @@ block content
                     div(class="vote__container")
                         if(vote === null || vote === undefined)
                             button(id="question_upVote")
-                                img
+                                div
                             span(id="question-vote__count") 0
                             button(id="question_downVote")
-                                img
+                                div
                         else if(vote.upvote  === false)
                             button(id="question_upVote")
-                                img
+                                div
                             span(id="question-vote__count") 0
                             button(id="question_downVote" class="active")
-                                img
+                                div
                         else
                             button(id="question_upVote" class="active")
-                                img
+                                div
                             span(id="question-vote__count") 0
                             button(id="question_downVote")
-                                img
+                                div
                     div(class="questionContent")
                         p= question.content
             div(class="total__div-row")
