@@ -16,6 +16,9 @@ Check the [Wiki](https://github.com/TastySatang/April-G2-Yoda-flow/wiki) for [AP
 
 ## Screenshots
 
+#### Home Page
+![](https://github.com/TastySatang/April-G2-Yoda-flow/blob/main/public/assets/home.png)
+
 ### User Authentications
 
 #### Login
